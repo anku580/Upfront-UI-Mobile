@@ -1,20 +1,88 @@
-<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
-    <mat-toolbar color="primary" class="example-toolbar">
-      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-      <h1 class="example-app-name">Responsive App</h1>
-    </mat-toolbar>
-  
-    <mat-sidenav-container class="example-sidenav-container"
-                           [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
-                   [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
-        <mat-nav-list>
-          <h3>Hello this</h3>
-        </mat-nav-list>
-      </mat-sidenav>
-  
-      <mat-sidenav-content>
-       
-      </mat-sidenav-content>
-    </mat-sidenav-container>
+<div class="container-fluid">
+  <div class="row box">
+
   </div>
+  <div class="row">
+    <div class="col-sm mt-3">
+      <span><b>Top Deals Today</b></span>
+    </div>
+  </div>
+
+  <div class="scrolling-wrapper">
+    <mat-grid-list cols={{deals.length}} rowHeight="130px">
+      <mat-grid-tile *ngFor="let deal of deals" [rowspan]="1" [colspan]="1">
+        <div class="card" style="width:190px;">
+          <div class="img-round-wrapper float-left ml-1 mt-1 mb-1 mr-2">
+            <img src="../../assets/dish_2.jpg" class="deal_img">
+          </div>
+          <span><b>{{deal.dish_name}}</b></span>
+          <br>
+          <span class="fa fa-map-marker fa-small mr-1"></span>{{deal.restaurant_location}}
+          <br>
+          <span>{{"Rs " + deal.dish_price}}</span>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
+
+  <mat-tab-group>
+
+    <mat-tab label="Food Style">
+
+      <div *ngFor="let pdish of popularDishes">
+        <div class="mt-2">
+          <span><b>{{pdish.dish_category}}</b></span>
+        </div>
+        <div class="scrolling-wrapper">
+          <mat-grid-list cols={{pdish.dish_deatails.length}} rowHeight="240px">
+            <mat-grid-tile *ngFor="let deal of pdish.dish_deatails" [rowspan]="1" [colspan]="1">
+              <div class="card" style="width:150px; height:220px">
+                <div>
+                  <img src="../../assets/dish_1.jpg" style="width: 148px; height:100px;">
+                </div>
+                <div class="card-body">
+                  <span><b>{{deal.dish_name}}</b></span><br>
+                  <span>{{deal.restaurant_location}}</span><br>
+                  <span>{{"Rs " + deal.dish_price}}</span>
+                </div>
+                <br>
+              </div>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </div>
+      </div>
+
+    </mat-tab>
+    <mat-tab label="Near me">
+      <div *ngFor="let restaurant of restaurantsNearBy">
+        <div class="card m-2" style="width: 100%">
+          <div class="card-body">
+            <div class="float-left m-1">
+              <img src="../../assets/kfc.png" class="res_img" alt="res_img">
+            </div>
+
+            <div class="row">
+              <div class="col-sm">
+                <span>{{restaurant.restaurant_name}}</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm">
+                <span>{{restaurant.restaurant_location}}</span>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm">
+                <span class="fa fa-star fa-small">{{restaurant.ratings}}</span>
+                <span class="fa fa-map-marker fa-small ml-4">{{restaurant.distance}}</span>
+                <span class="fa fa-heart fa-small ml-4"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

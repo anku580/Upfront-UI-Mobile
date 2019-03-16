@@ -20,13 +20,18 @@ import {
   MatSlideToggleModule, MatToolbarModule, MatListModule, MatGridListModule,
   MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule
 } from '@angular/material';
+import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 import {MatTabsModule} from '@angular/material/tabs';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { CartComponent } from './cart/cart.component';
 
 const routes : Routes = [
   { path: '', redirectTo: 'signup', pathMatch: 'full'},
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent}
+  { path: 'home', component: HomeComponent},
+  { path: 'cart', component: CartComponent}
 ]
 
 @NgModule({
@@ -34,7 +39,10 @@ const routes : Routes = [
     AppComponent,
     SignupComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    HeaderComponent,
+    FooterComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -42,12 +50,13 @@ const routes : Routes = [
     BrowserAnimationsModule,MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule,
     MatInputModule, MatRadioModule, MatSelectModule, MatSliderModule,
     MatSlideToggleModule, MatToolbarModule, MatListModule, MatGridListModule,
-    MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule,MatSidenavModule,
+    MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule,MatSidenavModule,MatTabsModule,
     RouterModule.forRoot(
       routes, {
         enableTracing: true
       }
     ),
+    ScrollDispatchModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,25 @@
+/* .space-top {
+    margin-top: 100px;
+} */
+
+.modal-header {
+    background: #FF9500;
+}
+
+.orange-color {
+    background: #FF9500;
+}
+
+.gray-color {
+    background: #E9E9E9;
+}
+
+.modal-body {
+    height: 200px;
+}
+
+.modal {
+    text-align: center;
+    border-radius: 5%
+}
+  

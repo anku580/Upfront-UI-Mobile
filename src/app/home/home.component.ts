@@ -1,5 +1,5 @@
-import {MediaMatcher} from '@angular/cdk/layout';
-import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
+import { MediaMatcher } from '@angular/cdk/layout';
+import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -8,19 +8,189 @@ import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
 })
 export class HomeComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
+  deals = [
+    {
+      dish_name: "Choco Lava",
+      restaurant_location: "Indiranagr",
+      dish_price: "120"
+    },
+    {
+      dish_name: "Choco Lava",
+      restaurant_location: "Indiranagr",
+      dish_price: "120"
+    },
+    {
+      dish_name: "Choco Lava",
+      restaurant_location: "Indiranagr",
+      dish_price: "120"
+    },
+    {
+      dish_name: "Choco Lava",
+      restaurant_location: "Indiranagr",
+      dish_price: "120"
+    },
+    {
+      dish_name: "Choco Lava",
+      restaurant_location: "Indiranagr",
+      dish_price: "120"
+    }
+  ]
 
-  private _mobileQueryListener: () => void;
+  popularDishes = [
+    {
+      dish_category: "South Indian",
+      dish_deatails: [
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        },
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        },
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        },
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        },
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        }
+      ]
+    },
+    {
+      dish_category: "North Indian",
+      dish_deatails: [
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        },
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        },
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        },
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        },
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        }
+      ]
+    },
+    {
+      dish_category: "Pizza",
+      dish_deatails: [
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        },
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        },
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        },
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        },
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        }
+      ]
+    }
+  ]
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
+  restaurantsNearBy = [
+    {
+      restaurant_name : "KFC",
+      restaurant_location : "Indira Nagar",
+      ratings : "4.8",
+      distance : "1.2",
+      is_veg : "false"
+    },
+    {
+      restaurant_name : "KFC",
+      restaurant_location : "Indira Nagar",
+      ratings : "4.8",
+      distance : "1.2",
+      is_veg : "false"
+    },
+    {
+      restaurant_name : "KFC",
+      restaurant_location : "Indira Nagar",
+      ratings : "4.8",
+      distance : "1.2",
+      is_veg : "false"
+    },
+    {
+      restaurant_name : "KFC",
+      restaurant_location : "Indira Nagar",
+      ratings : "4.8",
+      distance : "1.2",
+      is_veg : "false"
+    },
+    {
+      restaurant_name : "KFC",
+      restaurant_location : "Indira Nagar",
+      ratings : "4.8",
+      distance : "1.2",
+      is_veg : "false"
+    }
+  ]
+
+
+  constructor() {
+
   }
 
   ngOnDestroy(): void {
-    this.mobileQuery.removeListener(this._mobileQueryListener);
+
   }
 
-  shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
+
 
 }
