@@ -26,6 +26,9 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CartComponent } from './cart/cart.component';
 import { FavouritesComponent } from './favourites/favourites.component';
+import { ProfileComponent } from './profile/profile.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
+import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail.component';
 
 const routes : Routes = [
   { path: '', redirectTo: 'signup', pathMatch: 'full'},
@@ -33,7 +36,11 @@ const routes : Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent},
   { path: 'cart', component: CartComponent},
-  { path: 'favourites', component: FavouritesComponent}
+  { path: 'restaurant/:id', component: RestaurantDetailComponent},
+  { path: 'favourites', component: FavouritesComponent},
+  { path: 'profile', component: ProfileComponent},
+  { path: 'orderhistory', component: OrderHistoryComponent}
+
 ]
 
 @NgModule({
@@ -45,7 +52,10 @@ const routes : Routes = [
     HeaderComponent,
     FooterComponent,
     CartComponent,
-    FavouritesComponent
+    FavouritesComponent,
+    ProfileComponent,
+    OrderHistoryComponent,
+    RestaurantDetailComponent
   ],
   imports: [
     BrowserModule,

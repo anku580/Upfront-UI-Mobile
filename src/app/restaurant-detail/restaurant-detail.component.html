@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row text_size">
+    <div class="col-xs-2">
+      <i class="fa fa-angle-left"></i>
+    </div>
+    <div class="col-xs-8 text-center">
+      {{restaurantObj.restaurant_name}}
+    </div>
+    <div class="col-xs-2">
+      <div class="float-right">
+        <i class="fa fa-heart"></i>
+      </div>
+    </div>
+  </div>
+  <div class="row text-center space_top">
+    <div class="col-xs-4">
+      {{restaurantObj.reviews}}
+    </div>
+    <div class="col-xs-4">
+      <i class="fa fa-star"></i>{{restaurantObj.rating}}
+    </div>
+    <div class="col-xs-4">
+      <i class="fa fa-map-marker"></i>{{restaurantObj.distance}}
+    </div>
+  </div>
+  <div id="dish_slider" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="../../assets/dish_1.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="../../assets/dish_2.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="../../assets/dish_1.jpg" class="d-block w-100" alt="...">
+      </div>
+    </div>
+  </div>
+
+  <div class="scrolling-wrapper">
+      <mat-grid-list cols="restaurantDetail[0].dishes.length" rowHeight="130px">
+        <mat-grid-tile *ngFor="let deal of restaurantDetail[0].dishes" [rowspan]="1" [colspan]="1">
+          <div class="card" style="width:190px;">
+            <div class="img-round-wrapper float-left ml-1 mt-1 mb-1 mr-2">
+              <img src="../../assets/dish_2.jpg" class="deal_img">
+            </div>
+            <span><b>{{deal.dish_name}}</b></span>
+            <br>
+            <!-- <span class="fa fa-map-marker fa-small mr-1"></span>{{deal.restaurant_location}} -->
+            <br>
+            <span>{{"Rs " + deal.dish_price}}</span>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+</div>
