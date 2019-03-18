@@ -25,13 +25,15 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CartComponent } from './cart/cart.component';
+import { FavouritesComponent } from './favourites/favourites.component';
 
 const routes : Routes = [
   { path: '', redirectTo: 'signup', pathMatch: 'full'},
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent},
-  { path: 'cart', component: CartComponent}
+  { path: 'cart', component: CartComponent},
+  { path: 'favourites', component: FavouritesComponent}
 ]
 
 @NgModule({
@@ -42,7 +44,8 @@ const routes : Routes = [
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    CartComponent
+    CartComponent,
+    FavouritesComponent
   ],
   imports: [
     BrowserModule,
