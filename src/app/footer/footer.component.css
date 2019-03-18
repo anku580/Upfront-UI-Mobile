@@ -20,6 +20,9 @@
 
 .modal {
     text-align: center;
-    border-radius: 5%
+    border-radius: 5%;
 }
-  
+
+.col-xs-6 {
+    width: 50%;
+}

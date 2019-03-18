@@ -1,0 +1,13 @@
+.row {
+    margin: 10px;
+}
+
+.col-xs-6 {
+    width: 50%;
+}
+
+/* .circular_icon {
+    border-radius: 50%;
+    background: white;
+    width: 20px;
+} */
