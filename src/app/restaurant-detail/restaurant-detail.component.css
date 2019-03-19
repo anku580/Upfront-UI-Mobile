@@ -6,25 +6,6 @@
     margin-top : 30px;
 }
 
-.col-xs-2 {
-    width: 20%;
-}
-
-.col-xs-8 {
-    width: 60%;
-}
-
-.col-xs-4 {
-    width: 33.3%;
-}
-
-.col-xs-6 {
-    width: 50%;
-}
-
-.col-xs-12 {
-    width: 100%
-}
 
 .text_size {
     font-size : 20px

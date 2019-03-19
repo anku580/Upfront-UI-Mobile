@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {MatSnackBar} from '@angular/material';
+import {MatBottomSheet, MatBottomSheetRef} from '@angular/material';
+import { CustomizationComponent } from '../customization/customization.component';
+
+
 
 @Component({
   selector: 'app-restaurant-detail',
@@ -106,10 +111,23 @@ export class RestaurantDetailComponent implements OnInit {
       ]
     }
   ]
-  constructor() { }
+  constructor(private snackBar: MatSnackBar,
+    private bottomSheet: MatBottomSheet) { }
 
   ngOnInit() {
     // console.log(this.restaurantDetail[0].dishes)
+  }
+
+  openBottomSheet(){
+    this.bottomSheet.open(CustomizationComponent)
+    
+    // this.openSnackBar();
+  }
+
+  openSnackBar() {
+    console.log("Snack bar")
+    this.snackBar.open("1 Item", "View cart")
+    
   }
 
   removeSelected(){
@@ -118,6 +136,7 @@ export class RestaurantDetailComponent implements OnInit {
 
   dishAddedToCart(id) {
     console.log("Clicked: ", id);
+    this.openSnackBar();
     this.dishSelected = true;
   }
 
@@ -147,3 +166,6 @@ export class RestaurantDetailComponent implements OnInit {
   }
 
 }
+
+
+

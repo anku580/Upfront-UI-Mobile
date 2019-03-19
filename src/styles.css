@@ -7,3 +7,31 @@
 body {
     background-color: #F5F5F5
 }
+
+.col-xs-2 {
+    width: 20%;
+}
+
+.col-xs-8 {
+    width: 60%;
+}
+
+.col-xs-4 {
+    width: 33.3%;
+}
+
+.col-xs-6 {
+    width: 50%;
+}
+
+.col-xs-12 {
+    width: 100%
+}
+
+.theme_single_color{
+    color : #FF9500
+}
+
+.common_text_size {
+    font-size: 25px;
+}

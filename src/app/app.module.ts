@@ -18,7 +18,7 @@ import {
   MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule,
   MatInputModule, MatRadioModule, MatSelectModule, MatSliderModule,
   MatSlideToggleModule, MatToolbarModule, MatListModule, MatGridListModule,
-  MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule
+  MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule, MatSnackBarModule,MatBottomSheetModule
 } from '@angular/material';
 import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -29,6 +29,7 @@ import { FavouritesComponent } from './favourites/favourites.component';
 import { ProfileComponent } from './profile/profile.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail.component';
+import { CustomizationComponent } from './customization/customization.component';
 
 const routes : Routes = [
   { path: '', redirectTo: 'signup', pathMatch: 'full'},
@@ -55,15 +56,16 @@ const routes : Routes = [
     FavouritesComponent,
     ProfileComponent,
     OrderHistoryComponent,
-    RestaurantDetailComponent
+    RestaurantDetailComponent,
+    CustomizationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule,
     MatInputModule, MatRadioModule, MatSelectModule, MatSliderModule,
-    MatSlideToggleModule, MatToolbarModule, MatListModule, MatGridListModule,
-    MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule,MatSidenavModule,MatTabsModule,
+    MatSlideToggleModule, MatToolbarModule, MatListModule, MatGridListModule,MatSnackBarModule,
+    MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule,MatSidenavModule,MatTabsModule,MatBottomSheetModule,
     RouterModule.forRoot(
       routes, {
         enableTracing: true
@@ -72,6 +74,7 @@ const routes : Routes = [
     ScrollDispatchModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents : [CustomizationComponent, RestaurantDetailComponent]
 })
 export class AppModule { }

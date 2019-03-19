@@ -1,0 +1,21 @@
+.row {
+    margin : 5px;
+}
+
+.btn-primary {
+    
+    /* font-size: 13px; */
+    color: black;
+    letter-spacing: 1px;
+    line-height: 15px;
+    border: 1px solid black;
+    border-radius: 40px;
+    background: white;
+    transition: all 0.3s ease 0s;
+}
+
+.btn-hover:hover {
+    background : #FF9500;
+    box-shadow: 0px 15px 20px linear-gradient(to bottom,#FFDA61,#FF5353);
+    color: #fff;
+}
