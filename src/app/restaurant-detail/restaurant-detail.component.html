@@ -23,7 +23,7 @@
       <i class="fa fa-map-marker"></i>{{restaurantObj.distance}}
     </div>
   </div>
-  <div id="dish_slider" class="carousel slide" data-ride="carousel">
+  <div id="dish_slider" class="carousel slide space_top" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img src="../../assets/dish_1.jpg" class="d-block w-100" alt="...">
@@ -37,20 +37,47 @@
     </div>
   </div>
 
-  <div class="scrolling-wrapper">
-      <mat-grid-list cols="restaurantDetail[0].dishes.length" rowHeight="130px">
-        <mat-grid-tile *ngFor="let deal of restaurantDetail[0].dishes" [rowspan]="1" [colspan]="1">
-          <div class="card" style="width:190px;">
-            <div class="img-round-wrapper float-left ml-1 mt-1 mb-1 mr-2">
-              <img src="../../assets/dish_2.jpg" class="deal_img">
+
+  <div *ngFor="let categories of restaurantDetail" class="space_top">
+    <div class="row">
+      <div class="col-xs-12">
+        <span><b>{{categories.category}}</b></span>
+      </div>
+    </div>
+    <div class="scrolling-wrapper">
+      <mat-grid-list cols={{categories.dishes.length}} rowHeight="230px">
+        <mat-grid-tile *ngFor="let deal of categories.dishes" [rowspan]="1" [colspan]="1">
+          <div class="card text-center">
+            <div>
+              <div class="row">
+                <div class="col-xs-12 mt-1">
+                  <img src="../../assets/dish_2.jpg" class="deal_img">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <span><b>{{deal.dish_name}}</b></span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6 mt-2">
+                  <span><b>{{"Rs "}}</b></span><span id="green">{{deal.dish_price}}</span>
+                </div>
+                <div class="col-xs-6">
+                  <div *ngIf="dishSelected" class="mt-2">
+                    <span class="fa fa-minus-circle fa-lg mr-1" (click)="quantityDecrement(deal.dish_id)"></span>
+                    <span class="mr-1">{{deal.quantity}}</span>
+                    <span class="fa fa-plus-circle mr-1 fa-lg" (click)="quantityIncrement(deal.dish_id)"></span>
+                  </div>
+                  <div *ngIf="!dishSelected">
+                      <a role="button" class="btn btn-default" (click)="dishAddedToCart(deal.dish_id)">Add</a>
+                  </div>
+                </div>
+              </div>
             </div>
-            <span><b>{{deal.dish_name}}</b></span>
-            <br>
-            <!-- <span class="fa fa-map-marker fa-small mr-1"></span>{{deal.restaurant_location}} -->
-            <br>
-            <span>{{"Rs " + deal.dish_price}}</span>
           </div>
         </mat-grid-tile>
       </mat-grid-list>
     </div>
+  </div>
 </div>
