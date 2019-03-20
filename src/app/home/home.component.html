@@ -36,7 +36,7 @@
         </div>
         <div class="scrolling-wrapper">
           <mat-grid-list cols={{pdish.dish_deatails.length}} rowHeight="240px">
-            <mat-grid-tile *ngFor="let deal of pdish.dish_deatails" [rowspan]="1" [colspan]="1">
+            <mat-grid-tile *ngFor="let deal of pdish.dish_deatails" [routerLink]="['/restaurant', 1]" [rowspan]="1" [colspan]="1">
               <div class="card" style="width:150px; height:220px">
                 <div>
                   <img src="../../assets/dish_1.jpg" style="width: 148px; height:100px;">
@@ -56,7 +56,7 @@
     </mat-tab>
     <mat-tab label="Near me">
       <div *ngFor="let restaurant of restaurantsNearBy">
-        <div class="card m-2" style="width: 100%">
+        <div class="card m-2" style="width: 100%" [routerLink]="['/restaurant', 1]">
           <div class="card-body">
             <div class="float-left m-1">
               <img src="../../assets/kfc.png" class="res_img" alt="res_img">

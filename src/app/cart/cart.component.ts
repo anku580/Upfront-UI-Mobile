@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+import {MatBottomSheet, MatBottomSheetRef} from '@angular/material';
 
 @Component({
   selector: 'app-cart',
@@ -24,7 +26,7 @@ export class CartComponent implements OnInit {
       quantity : 1,
     }
   ]
-  constructor() { }
+  constructor(private location : Location) { }
 
   ngOnInit() {
   }
@@ -47,4 +49,7 @@ export class CartComponent implements OnInit {
     }
   }
 
+  goBack() {
+    this.location.back();
+  }
 }

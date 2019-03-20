@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {MatBottomSheet, MatBottomSheetRef} from '@angular/material';
+import { CartComponent } from '../cart/cart.component';
+import { LoginComponent } from '../login/login.component';
+
 
 @Component({
   selector: 'app-footer',
@@ -24,7 +28,7 @@ export class FooterComponent implements OnInit {
       quantity : 1,
     }
   ]
-  constructor() { }
+  constructor(private bottomSheet : MatBottomSheet) { }
 
   ngOnInit() {
   }
@@ -45,5 +49,9 @@ export class FooterComponent implements OnInit {
         this.orders[i].quantity = this.orders[i].quantity - 1;
       }
     }
+  }
+
+  openBottomCart() {
+    this.bottomSheet.open(CartComponent)
   }
 }

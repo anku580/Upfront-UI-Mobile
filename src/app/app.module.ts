@@ -30,6 +30,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail.component';
 import { CustomizationComponent } from './customization/customization.component';
+import { SnackbarComponent } from './snackbar/snackbar.component';
 
 const routes : Routes = [
   { path: '', redirectTo: 'signup', pathMatch: 'full'},
@@ -57,7 +58,8 @@ const routes : Routes = [
     ProfileComponent,
     OrderHistoryComponent,
     RestaurantDetailComponent,
-    CustomizationComponent
+    CustomizationComponent,
+    SnackbarComponent
   ],
   imports: [
     BrowserModule,
@@ -75,6 +77,6 @@ const routes : Routes = [
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents : [CustomizationComponent, RestaurantDetailComponent]
+  entryComponents : [CustomizationComponent, SnackbarComponent, CartComponent, FooterComponent]
 })
 export class AppModule { }

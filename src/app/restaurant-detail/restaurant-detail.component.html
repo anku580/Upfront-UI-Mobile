@@ -1,26 +1,26 @@
 <div class="container">
   <div class="row text_size">
     <div class="col-xs-2">
-      <i class="fa fa-angle-left"></i>
+      <i class="fa fa-angle-left" (click)="goBack()"></i>
     </div>
     <div class="col-xs-8 text-center">
       {{restaurantObj.restaurant_name}}
     </div>
     <div class="col-xs-2">
       <div class="float-right">
-        <i class="fa fa-heart"></i>
+        <i (click)="addToFavourite()" class="{{favorite ? 'fa fa-heart fa-lg' : 'fa fa-heart-o fa-lg'}}"></i>
       </div>
     </div>
   </div>
   <div class="row text-center space_top">
     <div class="col-xs-4">
-      {{restaurantObj.reviews}}
+        <i class="fa fa-dish mr-2"></i>{{restaurantObj.reviews}}
     </div>
     <div class="col-xs-4">
-      <i class="fa fa-star"></i>{{restaurantObj.rating}}
+      <i class="fa fa-star mr-2"></i>{{restaurantObj.rating}}
     </div>
     <div class="col-xs-4">
-      <i class="fa fa-map-marker"></i>{{restaurantObj.distance}}
+      <i class="fa fa-map-marker mr-2"></i>{{restaurantObj.distance}}
     </div>
   </div>
   <div id="dish_slider" class="carousel slide space_top" data-ride="carousel">
@@ -45,12 +45,12 @@
       </div>
     </div>
     <div class="scrolling-wrapper">
-      <mat-grid-list cols={{categories.dishes.length}} rowHeight="230px">
+      <mat-grid-list cols={{categories.dishes.length}} rowHeight="250px">
         <mat-grid-tile *ngFor="let deal of categories.dishes" [rowspan]="1" [colspan]="1">
           <div class="card text-center">
             <div>
               <div class="row">
-                <div class="col-xs-12 mt-1">
+                <div class="col-xs-12">
                   <img src="../../assets/dish_2.jpg" class="deal_img">
                 </div>
               </div>
@@ -59,15 +59,15 @@
                   <span><b>{{deal.dish_name}}</b></span>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-xs-6 mt-2">
+              <div class="row mt-4">
+                <div class="col-xs-4 mt-2 mr-2">
                   <span><b>{{"Rs "}}</b></span><span id="green">{{deal.dish_price}}</span>
                 </div>
-                <div class="col-xs-6">
-                  <div *ngIf="dishSelected" class="mt-2">
-                    <span class="fa fa-minus-circle fa-lg mr-1" (click)="quantityDecrement(deal.dish_id)"></span>
-                    <span class="mr-1">{{deal.quantity}}</span>
-                    <span class="fa fa-plus-circle mr-1 fa-lg" (click)="quantityIncrement(deal.dish_id)"></span>
+                <div class="col-xs-8 button-box">
+                  <div *ngIf="dishSelected" class="mt-2 mb-1">
+                    <span class="fa fa-minus fa-lg mr-2" (click)="quantityDecrement(deal.dish_id)"></span>
+                    <span class="mr-2">{{deal.quantity}}</span>
+                    <span class="fa fa-plus mr-1 fa-lg" (click)="quantityIncrement(deal.dish_id)"></span>
                   </div>
                   <div *ngIf="!dishSelected">
                       <a role="button" class="btn btn-default" (click)="dishAddedToCart(deal.dish_id)">Add</a>

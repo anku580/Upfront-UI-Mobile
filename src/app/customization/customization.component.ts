@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material';
+import {MatSnackBar, MatSnackBarConfig} from '@angular/material';
 import {RestaurantDetailComponent} from '../restaurant-detail/restaurant-detail.component'
+import { SnackbarComponent } from '../snackbar/snackbar.component';
 
 @Component({
   selector: 'app-customization',
@@ -9,7 +11,8 @@ import {RestaurantDetailComponent} from '../restaurant-detail/restaurant-detail.
 })
 export class CustomizationComponent implements OnInit {
 
-  constructor(private bottomSheetRef: MatBottomSheetRef<RestaurantDetailComponent>) {
+  constructor(private bottomSheetRef: MatBottomSheetRef<RestaurantDetailComponent>,
+    private snackBar: MatSnackBar,) {
     
    }
 
@@ -19,7 +22,21 @@ export class CustomizationComponent implements OnInit {
   openLink() {
     this.bottomSheetRef.dismiss();
     // event.preventDefault();
-    return false;
+    this.openSnackBar()
+  }
+
+  openSnackBar() {
+    console.log("Snack bar")
+    let config = new MatSnackBarConfig();
+    config.duration = 5000;
+    config.panelClass = ['yellow-snackbar'];
+    // this.snackBar.openFromComponent(SnackbarComponent, {
+    //   duration: 5*1000,
+    //   panelClass: ['yellow-snackbar']
+    // })
+
+    this.snackBar.openFromComponent(SnackbarComponent, config)
+    
   }
 
 }

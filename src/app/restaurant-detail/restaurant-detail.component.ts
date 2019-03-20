@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {MatSnackBar} from '@angular/material';
+import {MatSnackBar, MatSnackBarConfig} from '@angular/material';
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material';
 import { CustomizationComponent } from '../customization/customization.component';
-
+import { SnackbarComponent } from '../snackbar/snackbar.component';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -21,6 +22,7 @@ export class RestaurantDetailComponent implements OnInit {
 
   private dishSelected = false;
   private Quantity;
+  private favorite = false;
 
   private restaurantDetail = [
     {
@@ -112,7 +114,8 @@ export class RestaurantDetailComponent implements OnInit {
     }
   ]
   constructor(private snackBar: MatSnackBar,
-    private bottomSheet: MatBottomSheet) { }
+    private bottomSheet: MatBottomSheet,
+    private location : Location) { }
 
   ngOnInit() {
     // console.log(this.restaurantDetail[0].dishes)
@@ -126,7 +129,15 @@ export class RestaurantDetailComponent implements OnInit {
 
   openSnackBar() {
     console.log("Snack bar")
-    this.snackBar.open("1 Item", "View cart")
+    let config = new MatSnackBarConfig();
+    config.duration = 5000;
+    config.panelClass = ['yellow-snackbar'];
+    // this.snackBar.openFromComponent(SnackbarComponent, {
+    //   duration: 5*1000,
+    //   panelClass: ['yellow-snackbar']
+    // })
+
+    this.snackBar.openFromComponent(SnackbarComponent, config)
     
   }
 
@@ -135,8 +146,8 @@ export class RestaurantDetailComponent implements OnInit {
   }
 
   dishAddedToCart(id) {
-    console.log("Clicked: ", id);
-    this.openSnackBar();
+    // this.openSnackBar();
+    this.openBottomSheet();
     this.dishSelected = true;
   }
 
@@ -151,6 +162,10 @@ export class RestaurantDetailComponent implements OnInit {
     }
   }
 
+  goBack() {
+    this.location.back();
+  }
+
   quantityDecrement(id : any){
     let i = 0,j = 0;
     for(i=0; i<this.restaurantDetail.length; i++) {
@@ -163,6 +178,10 @@ export class RestaurantDetailComponent implements OnInit {
         }
       }
     }
+  }
+
+  addToFavourite() {
+    this.favorite = !this.favorite;
   }
 
 }
