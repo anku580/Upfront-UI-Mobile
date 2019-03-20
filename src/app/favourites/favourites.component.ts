@@ -38,14 +38,17 @@ export class FavouritesComponent implements OnInit {
   favouriteRestaurants = [
     {
       imgURL : "abc",
+      name : "KFC",
       restaurant_id : 1
     },
     {
       imgURL : "abc",
+      name : "MacDonald",
       restaurant_id : 1
     },
     {
       imgURL : "abc",
+      name : "Subway",
       restaurant_id : 1
     },
   ]

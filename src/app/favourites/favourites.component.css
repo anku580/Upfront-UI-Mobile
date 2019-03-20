@@ -15,16 +15,17 @@
 
 .res_img {
     display: inline-block;
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     background-repeat: no-repeat;
     /* background-position: center center; */
     background-size: cover;
+    border : 1px solid black;
     
 }
 
 mat-tab {
-    margin : 50px;
+    margin-right : 150px;
 }
 
 .fa-angle-left {

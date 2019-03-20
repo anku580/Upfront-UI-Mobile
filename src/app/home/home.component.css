@@ -44,8 +44,8 @@
 
 .res_img {
     display: inline-block;
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     background-repeat: no-repeat;
     background-position: center center;
@@ -56,15 +56,18 @@
 
 .card {
     display: inline-block;
-    border-radius: 10%;
+    border-radius: 5%;
+    width: 100%;
+    
 }
+
 
 .card:hover {
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .15);
 }
 
 mat-grid-list {
-      width: 800px;
+      width: 1000px;
 }
 
 .box {

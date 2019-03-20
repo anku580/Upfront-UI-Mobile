@@ -12,6 +12,10 @@ body {
     width: 20%;
 }
 
+.col-xs-3 {
+    width : 25%;
+}
+
 .col-xs-8 {
     width: 60%;
 }

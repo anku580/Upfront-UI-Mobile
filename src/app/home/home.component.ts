@@ -69,6 +69,12 @@ export class HomeComponent implements OnDestroy {
           restaurant_location: "Indiranagar",
           dish_price: "120",
           dish_url: ""
+        },
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
         }
       ]
     },
@@ -104,12 +110,24 @@ export class HomeComponent implements OnDestroy {
           restaurant_location: "Indiranagar",
           dish_price: "120",
           dish_url: ""
+        },
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
         }
       ]
     },
     {
       dish_category: "Pizza",
       dish_deatails: [
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        },
         {
           dish_name: "Chicken Biryani",
           restaurant_location: "Indiranagar",
