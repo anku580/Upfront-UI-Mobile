@@ -3,12 +3,10 @@
     flex: 1 1 auto;
     
 }
-/* 
-.card {
-    display: flex;
-    background-color: #fff;
-    min-width: 100%;
-} */
+
+.row {
+    margin : 5px;
+}
 
 .horizontal-display {
     display: inline-block;
@@ -33,6 +31,14 @@
 
 .deal_img {
     display: inline-block;
+    width: 160px;
+    height: 120px;
+    background-repeat: no-repeat;
+}
+
+
+.res_img {
+    display: inline-block;
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -42,23 +48,16 @@
     
 }
 
-.res_img {
+.card_deal {
     display: inline-block;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
+    width: 200px;
     
 }
 
-
-.card {
+.card_dish {
     display: inline-block;
-    border-radius: 5%;
-    width: 100%;
-    
+    height : 240px;
+    width: 180px;
 }
 
 
@@ -67,11 +66,19 @@
 }
 
 mat-grid-list {
-      width: 1000px;
+      width: 1900px;
 }
 
 .box {
     border : 0px solid black;
     height: 200px;
     width: 100px;
-}   
+}  
+
+.button-box {
+    border: 1px solid #FF9500;
+    border-radius: 4px;
+    height: 38px;
+    width: 90.4px;
+}
+

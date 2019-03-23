@@ -31,6 +31,11 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
 import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail.component';
 import { CustomizationComponent } from './customization/customization.component';
 import { SnackbarComponent } from './snackbar/snackbar.component';
+import { MultipleBranchComponent } from './multiple-branch/multiple-branch.component';
+import {MatBadgeModule} from '@angular/material/badge';
+import { OrderHistoryDetailsComponent } from './order-history-details/order-history-details.component';
+import { OffersComponent } from './offers/offers.component';
+import {MatStepperModule} from '@angular/material/stepper';
 
 const routes : Routes = [
   { path: '', redirectTo: 'signup', pathMatch: 'full'},
@@ -41,7 +46,8 @@ const routes : Routes = [
   { path: 'restaurant/:id', component: RestaurantDetailComponent},
   { path: 'favourites', component: FavouritesComponent},
   { path: 'profile', component: ProfileComponent},
-  { path: 'orderhistory', component: OrderHistoryComponent}
+  { path: 'orderhistory', component: OrderHistoryComponent},
+  { path: 'offers', component : OffersComponent}
 
 ]
 
@@ -59,14 +65,17 @@ const routes : Routes = [
     OrderHistoryComponent,
     RestaurantDetailComponent,
     CustomizationComponent,
-    SnackbarComponent
+    SnackbarComponent,
+    MultipleBranchComponent,
+    OrderHistoryDetailsComponent,
+    OffersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule,
     MatInputModule, MatRadioModule, MatSelectModule, MatSliderModule,
-    MatSlideToggleModule, MatToolbarModule, MatListModule, MatGridListModule,MatSnackBarModule,
+    MatSlideToggleModule, MatToolbarModule, MatListModule, MatGridListModule,MatSnackBarModule,MatBadgeModule,MatStepperModule,
     MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule,MatSidenavModule,MatTabsModule,MatBottomSheetModule,
     RouterModule.forRoot(
       routes, {
@@ -77,6 +86,6 @@ const routes : Routes = [
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents : [CustomizationComponent, SnackbarComponent, CartComponent, FooterComponent]
+  entryComponents : [CustomizationComponent, SnackbarComponent, CartComponent, FooterComponent, MultipleBranchComponent]
 })
 export class AppModule { }

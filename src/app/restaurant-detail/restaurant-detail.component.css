@@ -28,19 +28,13 @@
 
 .deal_img {
     display: inline-block;
-    width: 150px;
+    width: 160px;
     height: 120px;
     background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    border-radius : 10%;
 }
-
-
 
 .card {
     display: inline-block;
-    border-radius: 5%;
     height : 240px;
     width: 180px;
 }
@@ -50,11 +44,7 @@
 }
 
 mat-grid-list {
-      width: 500px;
-}
-
-.btn-default {
-    
+      width: 1900px;
 }
 
 #green {
@@ -74,4 +64,9 @@ mat-grid-list {
 
 .fa-star {
     color : yellow;
+}
+
+.reduce-height {
+    height : 200px;
+    width : 350px;
 }

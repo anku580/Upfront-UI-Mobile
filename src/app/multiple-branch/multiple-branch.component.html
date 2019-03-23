@@ -1,0 +1,11 @@
+<mat-nav-list>
+    <div *ngFor="let branch of multipleBranches">
+        <a href="https://keep.google.com/" mat-list-item (click)="openLink($event)">
+          <span mat-line>{{branch.restaurant_name}}</span>
+          <span mat-line>{{branch.restaurant_location}}</span>
+          <div class="float-right">
+          <span mat-line><span class="fa fa-map-marker mr-1"></span>{{branch.restaurant_distance + " km"}}</span>
+        </div>
+        </a>
+    </div>
+  </mat-nav-list>

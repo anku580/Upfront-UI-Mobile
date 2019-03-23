@@ -51,6 +51,62 @@ export class RestaurantDetailComponent implements OnInit {
           imgURL : "abc",
           quantity : 0,
           is_selected : false
+        },
+        {
+          dish_id : 1,
+          dish_name : "Chicken soup",
+          dish_price : 120,
+          imgURL : "abc",
+          quantity : 0,
+          is_selected : false
+        },
+        {
+          dish_id : 1,
+          dish_name : "Chicken soup",
+          dish_price : 120,
+          imgURL : "abc",
+          quantity : 0,
+          is_selected : false
+        },
+        {
+          dish_id : 1,
+          dish_name : "Chicken soup",
+          dish_price : 120,
+          imgURL : "abc",
+          quantity : 0,
+          is_selected : false
+        },
+        {
+          dish_id : 1,
+          dish_name : "Chicken soup",
+          dish_price : 120,
+          imgURL : "abc",
+          quantity : 0,
+          is_selected : false
+        },
+        {
+          dish_id : 1,
+          dish_name : "Chicken soup",
+          dish_price : 120,
+          imgURL : "abc",
+          quantity : 0,
+          is_selected : false
+        },
+        {
+          dish_id : 1,
+          dish_name : "Chicken soup",
+          dish_price : 120,
+          imgURL : "abc",
+          quantity : 0,
+          is_selected : false
+        },
+        {
+          dish_id : 1,
+          dish_name : "Chicken soup",
+          dish_price : 120,
+          imgURL : "abc",
+          quantity : 0,
+          is_selected : false
         }
       ]
     },
