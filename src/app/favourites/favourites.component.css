@@ -1,5 +1,6 @@
 .card {
     display: inline-block;
+    border-radius: 10%;
     width: 100%;
     height : 100px;
 }
@@ -14,17 +15,16 @@
 
 .res_img {
     display: inline-block;
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     background-repeat: no-repeat;
     /* background-position: center center; */
     background-size: cover;
-    border : 1px solid black;
     
 }
 
 mat-tab {
-    margin-right : 150px;
+    margin : 50px;
 }
 
 .fa-angle-left {

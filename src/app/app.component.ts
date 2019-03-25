@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +7,4 @@ import { Location } from '@angular/common';
 })
 export class AppComponent {
   title = 'Upfront-user';
-
-  constructor(private location : Location) {
-
-  }
-
-  
-
 }

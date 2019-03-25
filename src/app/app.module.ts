@@ -18,7 +18,7 @@ import {
   MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule,
   MatInputModule, MatRadioModule, MatSelectModule, MatSliderModule,
   MatSlideToggleModule, MatToolbarModule, MatListModule, MatGridListModule,
-  MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule, MatSnackBarModule,MatBottomSheetModule
+  MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule, MatMenuModule
 } from '@angular/material';
 import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -29,13 +29,7 @@ import { FavouritesComponent } from './favourites/favourites.component';
 import { ProfileComponent } from './profile/profile.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail.component';
-import { CustomizationComponent } from './customization/customization.component';
-import { SnackbarComponent } from './snackbar/snackbar.component';
-import { MultipleBranchComponent } from './multiple-branch/multiple-branch.component';
-import {MatBadgeModule} from '@angular/material/badge';
-import { OrderHistoryDetailsComponent } from './order-history-details/order-history-details.component';
-import { OffersComponent } from './offers/offers.component';
-import {MatStepperModule} from '@angular/material/stepper';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
 const routes : Routes = [
   { path: '', redirectTo: 'signup', pathMatch: 'full'},
@@ -47,7 +41,7 @@ const routes : Routes = [
   { path: 'favourites', component: FavouritesComponent},
   { path: 'profile', component: ProfileComponent},
   { path: 'orderhistory', component: OrderHistoryComponent},
-  { path: 'offers', component : OffersComponent}
+  { path: 'welcomePage', component: WelcomePageComponent}
 
 ]
 
@@ -64,19 +58,15 @@ const routes : Routes = [
     ProfileComponent,
     OrderHistoryComponent,
     RestaurantDetailComponent,
-    CustomizationComponent,
-    SnackbarComponent,
-    MultipleBranchComponent,
-    OrderHistoryDetailsComponent,
-    OffersComponent
+    WelcomePageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule,
     MatInputModule, MatRadioModule, MatSelectModule, MatSliderModule,
-    MatSlideToggleModule, MatToolbarModule, MatListModule, MatGridListModule,MatSnackBarModule,MatBadgeModule,MatStepperModule,
-    MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule,MatSidenavModule,MatTabsModule,MatBottomSheetModule,
+    MatSlideToggleModule, MatToolbarModule, MatListModule, MatGridListModule,MatMenuModule,
+    MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule,MatSidenavModule,MatTabsModule,MatCheckboxModule,
     RouterModule.forRoot(
       routes, {
         enableTracing: true
@@ -85,7 +75,6 @@ const routes : Routes = [
     ScrollDispatchModule,
   ],
   providers: [],
-  bootstrap: [AppComponent],
-  entryComponents : [CustomizationComponent, SnackbarComponent, CartComponent, FooterComponent, MultipleBranchComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,11 @@
 .row {
-    margin-top : 5px;
+    margin: 10px;
 }
+
+.col-xs-6 {
+    width: 50%;
+}
+
 .size_heading {
     font-size: 20px;
 }
@@ -8,34 +13,6 @@
 .fa-angle-left {
     font-size: 30px;
 }
-
-.res_img {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    
-}
-
-
-.scrolling-wrapper {
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
-  
-}
-
-.grid-list {
-    width: 800px;
-}
-
-::-webkit-scrollbar { 
-    display: none; 
-}
-
 /* .circular_icon {
     border-radius: 50%;
     background: white;

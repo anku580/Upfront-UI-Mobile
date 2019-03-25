@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-profile',
@@ -13,13 +12,9 @@ export class ProfileComponent implements OnInit {
     mobile : "9876556200",
     email : "ankugarg580@gmail.com"
   }
-  constructor(private location : Location) { }
+  constructor() { }
 
   ngOnInit() {
-  }
-
-  goBack() {
-    this.location.back();
   }
 
 }
