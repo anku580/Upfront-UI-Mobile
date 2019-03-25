@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material';
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material';
 import { CustomizationComponent } from '../customization/customization.component';
@@ -8,6 +8,7 @@ import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-restaurant-detail',
+  encapsulation: ViewEncapsulation.None,
   templateUrl: './restaurant-detail.component.html',
   styleUrls: ['./restaurant-detail.component.css']
 })
@@ -187,13 +188,13 @@ export class RestaurantDetailComponent implements OnInit {
     console.log("Snack bar")
     let config = new MatSnackBarConfig();
     config.duration = 5000;
-    config.panelClass = ['yellow-snackbar'];
-    // this.snackBar.openFromComponent(SnackbarComponent, {
-    //   duration: 5*1000,
-    //   panelClass: ['yellow-snackbar']
-    // })
+    config.panelClass = ['blue-snackbar'];
+    this.snackBar.openFromComponent(SnackbarComponent, {
+      duration: 5*1000,
+      panelClass: []
+    })
 
-    this.snackBar.openFromComponent(SnackbarComponent, config)
+    // this.snackBar.openFromComponent(SnackbarComponent, config)
     
   }
 

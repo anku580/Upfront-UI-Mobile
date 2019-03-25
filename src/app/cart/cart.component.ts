@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import {MatSnackBar, MatSnackBarConfig} from '@angular/material';
+import { SnackbarComponent } from '../snackbar/snackbar.component';
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material';
 
 @Component({
@@ -31,69 +33,7 @@ export class CartComponent implements OnInit {
         },
       ]
     },
-    {
-      restaurant_id : 1,
-      restaurant_name : "KFC",
-      restaurant_location : "Halasuru",
-      orders : [
-        {
-          dish_id : 1,
-          dish_name : "Biryani",
-          dish_quantity : 2,
-          dish_price : 120,
-          dish_total_price : 240
-        },
-        {
-          dish_id : 2,
-          dish_name : "Burger",
-          dish_quantity : 1,
-          dish_price : 120,
-          dish_total_price : 240
-        },
-      ]
-    },
-    {
-      restaurant_id : 1,
-      restaurant_name : "KFC",
-      restaurant_location : "Halasuru",
-      orders : [
-        {
-          dish_id : 1,
-          dish_name : "Biryani",
-          dish_quantity : 2,
-          dish_price : 120,
-          dish_total_price : 240
-        },
-        {
-          dish_id : 2,
-          dish_name : "Burger",
-          dish_quantity : 1,
-          dish_price : 120,
-          dish_total_price : 240
-        },
-      ]
-    },
-    {
-      restaurant_id : 1,
-      restaurant_name : "KFC",
-      restaurant_location : "Halasuru",
-      orders : [
-        {
-          dish_id : 1,
-          dish_name : "Biryani",
-          dish_quantity : 2,
-          dish_price : 120,
-          dish_total_price : 240
-        },
-        {
-          dish_id : 2,
-          dish_name : "Burger",
-          dish_quantity : 1,
-          dish_price : 120,
-          dish_total_price : 240
-        },
-      ]
-    }
+    
   ]
 
   private dishTasteBased = [
@@ -123,9 +63,19 @@ export class CartComponent implements OnInit {
     }
   ]
   
-  constructor(private location : Location) { }
+  constructor(private location : Location,
+    private snackBar : MatSnackBar) { }
 
   ngOnInit() {
+
+    this.openSnackBar();
+    
+  }
+
+  openSnackBar() {
+    this.snackBar.openFromComponent(SnackbarComponent,{
+      panelClass : ['yellow-snack']
+    })
   }
 
   quantityIncrement(id : any){

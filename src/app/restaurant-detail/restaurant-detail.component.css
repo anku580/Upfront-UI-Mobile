@@ -70,3 +70,7 @@ mat-grid-list {
     height : 200px;
     width : 350px;
 }
+
+.blue-snackbar {
+    background: #2196F3;
+}

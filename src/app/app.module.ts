@@ -18,7 +18,7 @@ import {
   MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule,
   MatInputModule, MatRadioModule, MatSelectModule, MatSliderModule,
   MatSlideToggleModule, MatToolbarModule, MatListModule, MatGridListModule,
-  MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule, MatSnackBarModule,MatBottomSheetModule
+  MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule, MatSnackBarModule,MatBottomSheetModule, MatMenuModule
 } from '@angular/material';
 import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -36,6 +36,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { OrderHistoryDetailsComponent } from './order-history-details/order-history-details.component';
 import { OffersComponent } from './offers/offers.component';
 import {MatStepperModule} from '@angular/material/stepper';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
 const routes : Routes = [
   { path: '', redirectTo: 'signup', pathMatch: 'full'},
@@ -47,7 +48,8 @@ const routes : Routes = [
   { path: 'favourites', component: FavouritesComponent},
   { path: 'profile', component: ProfileComponent},
   { path: 'orderhistory', component: OrderHistoryComponent},
-  { path: 'offers', component : OffersComponent}
+  { path: 'offers', component : OffersComponent},
+  { path: 'welcomePage', component: WelcomePageComponent}
 
 ]
 
@@ -68,7 +70,8 @@ const routes : Routes = [
     SnackbarComponent,
     MultipleBranchComponent,
     OrderHistoryDetailsComponent,
-    OffersComponent
+    OffersComponent,
+    WelcomePageComponent
   ],
   imports: [
     BrowserModule,
@@ -77,6 +80,7 @@ const routes : Routes = [
     MatInputModule, MatRadioModule, MatSelectModule, MatSliderModule,
     MatSlideToggleModule, MatToolbarModule, MatListModule, MatGridListModule,MatSnackBarModule,MatBadgeModule,MatStepperModule,
     MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule,MatSidenavModule,MatTabsModule,MatBottomSheetModule,
+    MatMenuModule,
     RouterModule.forRoot(
       routes, {
         enableTracing: true

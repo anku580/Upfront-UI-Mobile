@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material';
 import { CartComponent } from '../cart/cart.component';
 import { LoginComponent } from '../login/login.component';
@@ -28,9 +28,14 @@ export class FooterComponent implements OnInit {
       quantity : 1,
     }
   ]
+  prevScroll: any;
+  shownavbar: boolean;
+  
   constructor(private bottomSheet : MatBottomSheet) { }
 
   ngOnInit() {
+    this.prevScroll = 0;
+    this.shownavbar = true;
   }
 
   quantityIncrement(id : any){
@@ -53,5 +58,17 @@ export class FooterComponent implements OnInit {
 
   openBottomCart() {
     this.bottomSheet.open(CartComponent)
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  hideNavbar(event): void {
+    console.log("prevScroll Scrolling" + this.prevScroll);
+    console.log("scrollTop Scrolling" + document.documentElement.scrollTop);
+    if(this.prevScroll < document.documentElement.scrollTop) {
+      this.shownavbar = false;
+    } else {
+      this.shownavbar = true;
+    }
+    this.prevScroll = document.documentElement.scrollTop;
   }
 }

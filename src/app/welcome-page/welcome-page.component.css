@@ -1,0 +1,36 @@
+body{
+    background-color: white;
+}
+
+.caro1{
+    color:black;
+}
+.carousel-indicators li {
+    width: 10px;
+    height: 10px;
+    color: #ff9500;
+    border-radius: 100%;
+    margin-top: -58px;
+    border-block-end-color:  #ff9500;
+  }
+.chef1{
+    margin-top:40px;
+}
+.skip {
+    position: absolute;
+    top: 8px;
+    right:16px;
+    color: #ff9500;
+  }
+  .carousel-control-next{
+      height:80%;
+      margin-top:25%;
+  }
+  .carousel-control-next{
+    height:80%;
+    margin-top:25%;
+}
+.carousel-control-prev{
+        height:80%;
+        margin-top:25%;
+}
