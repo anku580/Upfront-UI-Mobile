@@ -9,10 +9,16 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 
+import { baseURL } from './shared/baseURL';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+
 import 'hammerjs';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthInterceptor, UnauthorizedInterceptor } from './service/auth.interceptor';
 
 import {
   MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule,
@@ -75,12 +81,14 @@ const routes : Routes = [
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule,
     MatInputModule, MatRadioModule, MatSelectModule, MatSliderModule,
     MatSlideToggleModule, MatToolbarModule, MatListModule, MatGridListModule,MatSnackBarModule,MatBadgeModule,MatStepperModule,
     MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule,MatSidenavModule,MatTabsModule,MatBottomSheetModule,
-    MatMenuModule,
+    MatMenuModule, HttpClientModule,
     RouterModule.forRoot(
       routes, {
         enableTracing: true
@@ -88,7 +96,18 @@ const routes : Routes = [
     ),
     ScrollDispatchModule,
   ],
-  providers: [],
+  providers: [{ provide : 'baseURL', useValue : baseURL},
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: UnauthorizedInterceptor,
+    multi: true
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  },  
+],
   bootstrap: [AppComponent],
   entryComponents : [CustomizationComponent, SnackbarComponent, CartComponent, FooterComponent, MultipleBranchComponent]
 })

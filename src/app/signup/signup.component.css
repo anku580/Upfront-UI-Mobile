@@ -18,3 +18,20 @@ img {
 .container-fluid {
     margin-top : 320px;
 }
+
+.overflow-handling {
+    overflow-x: hidden;
+}
+
+.row {
+    padding : 5px;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.half-width {
+    width : 100%;
+}

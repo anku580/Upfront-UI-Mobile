@@ -62,8 +62,6 @@ export class FooterComponent implements OnInit {
 
   @HostListener('window:scroll', ['$event'])
   hideNavbar(event): void {
-    console.log("prevScroll Scrolling" + this.prevScroll);
-    console.log("scrollTop Scrolling" + document.documentElement.scrollTop);
     if(this.prevScroll < document.documentElement.scrollTop) {
       this.shownavbar = false;
     } else {

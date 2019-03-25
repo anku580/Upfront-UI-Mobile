@@ -1,62 +1,131 @@
-<div class="row">
-  <div class="col-sm">
+<div class="overflow-handling">
+  <div class="col-xs-12">
     <img class="imgA1" src="../../assets/signup.png" alt="signup_image">
     <div class="text-center">
       <img class="imgB1" src="../../assets/logo.png" alt="logo_image">
     </div>
   </div>
-</div>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm">
-      <div class="form-group">
-        <!-- <label for="name">Name</label> -->
-        <input type="name" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter name">
+  <div class="container-fluid">
+    <form novalidate [formGroup]="signupform" #fform="ngForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>Username:</mat-label>
+            <input matInput formControlName="username" type="text" placeholder="Enter your username" required>
+            <mat-hint>
+              <span [hidden]="!(formErrors.username)">
+                {{formErrors.username}}</span>
+            </mat-hint>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>Mobile Number:</mat-label>
+            <input matInput formControlName="mobile_number" type="text" placeholder="987XXXXXXX" required>
+            <mat-hint>
+              <span [hidden]="!(formErrors.mobile_number)">
+                {{formErrors.mobile_number}}</span>
+            </mat-hint>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>Email:</mat-label>
+            <input matInput formControlName="email" type="text" placeholder="Enter your email Id" required>
+            <mat-hint>
+              <span [hidden]="!(formErrors.email)">
+                {{formErrors.email}}</span>
+            </mat-hint>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <mat-form-field appearance="outline" class="half-width">
+            <mat-label>Password:</mat-label>
+            <input matInput formControlName="password" type="password" placeholder="Enter your password" required>
+            <mat-hint>
+              <span [hidden]="!(formErrors.password)">
+                {{formErrors.password}}</span>
+            </mat-hint>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <mat-checkbox>Remember me</mat-checkbox>
+        </div>
+        <div class="col-xs-6">
+          <div class="text-right">
+            <span>Forgot Password?</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-lg btn-block button-color" [disabled]="signupform.invalid">Sign
+            Up</button>
+        </div>
+      </div>
+    </form>
+    <!-- <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          
+          <input type="name" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter name">
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm">
-      <div class="form-group">
-        <!-- <label for="num">Number</label> -->
-        <input type="num" class="form-control" id="name" aria-describedby="nameHelp" max-value="10" placeholder="Enter number">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          
+          <input type="num" class="form-control" id="name" aria-describedby="nameHelp" max-value="10"
+            placeholder="Enter number">
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm col-md">
-      <div class="form-group">
-        <!-- <label for="email">Email</label> -->
-        <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
-          placeholder="example@gmail.com">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          
+          <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+            placeholder="example@gmail.com">
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm col-md">
-      <div class="form-group">
-        <!-- <label for="name">password</label> -->
-        <input type="password" class="form-control" id="password" aria-describedby="passwordHelp" placeholder="*******">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          
+          <input type="password" class="form-control" id="password" aria-describedby="passwordHelp"
+            placeholder="*******">
+        </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-sm col-md">
-      <div class="form-group">
-        <!-- <label for="name">Confirm password</label> -->
-        <input type="password" class="form-control" id="password" aria-describedby="passwordHelp" placeholder="*******">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          
+          <input type="password" class="form-control" id="password" aria-describedby="passwordHelp"
+            placeholder="*******">
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col-sm col-md">
-    <div class="text-center">
-      <button class="btn btn-warning btn-lg">Register</button>
+    <div class="col-xs-12">
+      <div class="text-center">
+        <button class="btn btn-warning btn-lg">Register</button>
+      </div>
     </div>
-  </div>
-  <div class="col-sm mt-2">
-    <div class="text-center">
-      <span>Already a user?</span>
-      <a role="button" routerLink="/login">Login</a>
-    </div>
+    <div class="col-xs-12 mt-2">
+      <div class="text-center">
+        <span>Already a user?</span>
+        <a role="button" routerLink="/login">Login</a>
+      </div>
+    </div> -->
   </div>
 </div>
