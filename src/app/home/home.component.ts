@@ -1,14 +1,38 @@
 import { MediaMatcher } from '@angular/cdk/layout';
-import { ChangeDetectorRef, Component, OnDestroy, HostListener } from '@angular/core';
+import {MatBottomSheet, MatBottomSheetRef} from '@angular/material';
+import { ChangeDetectorRef, Component, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { MultipleBranchComponent } from '../multiple-branch/multiple-branch.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
+  private dishSelected = false;
   deals = [
+    {
+      dish_name: "Choco Lava",
+      restaurant_location: "Indiranagr",
+      dish_price: "120"
+    },
+    {
+      dish_name: "Choco Lava",
+      restaurant_location: "Indiranagr",
+      dish_price: "120"
+    },
+    {
+      dish_name: "Choco Lava",
+      restaurant_location: "Indiranagr",
+      dish_price: "120"
+    },
+    {
+      dish_name: "Choco Lava",
+      restaurant_location: "Indiranagr",
+      dish_price: "120"
+    },
     {
       dish_name: "Choco Lava",
       restaurant_location: "Indiranagr",
@@ -40,6 +64,36 @@ export class HomeComponent implements OnDestroy {
     {
       dish_category: "South Indian",
       dish_deatails: [
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        },
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        },
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        },
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        },
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        },
         {
           dish_name: "Chicken Biryani",
           restaurant_location: "Indiranagar",
@@ -104,12 +158,72 @@ export class HomeComponent implements OnDestroy {
           restaurant_location: "Indiranagar",
           dish_price: "120",
           dish_url: ""
+        },
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        },
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        },
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        },
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        },
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
         }
       ]
     },
     {
       dish_category: "Pizza",
       dish_deatails: [
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        },
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        },
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        },
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        },
+        {
+          dish_name: "Chicken Biryani",
+          restaurant_location: "Indiranagar",
+          dish_price: "120",
+          dish_url: ""
+        },
         {
           dish_name: "Chicken Biryani",
           restaurant_location: "Indiranagar",
@@ -182,19 +296,26 @@ export class HomeComponent implements OnDestroy {
     }
   ]
 
+  private multipleBranches = true;
 
-  constructor() {
 
+  constructor(private bottomSheet: MatBottomSheet) {
+
+  }
+
+  dishAddedToCart(id) {
+    
+    this.dishSelected = true;
+  }
+
+  openBottomSheet(): void {
+    this.bottomSheet.open(MultipleBranchComponent);
   }
 
   ngOnDestroy(): void {
 
   }
 
-  // @HostListener('window:scroll', ['$event'])
-  // showNavbar(event): void {
-  //   console.log("Scrolling" + document.body.scrollTop);
-  // }
 
 
 }

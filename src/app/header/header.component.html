@@ -1,12 +1,11 @@
 
-		<div class="flexsearch--wrapper">
-			<form class="flexsearch--form">
-				<div class="flexsearch--input-wrapper">
-					<input class="flexsearch--input" type="search" placeholder="search" background:transparant>
-        </div>
-        <a href="#">
+
+		<div class="search">
+            <form class="search-form">
+                <input type="text" placeholder="Search" class="searchtext">
+    <div>    <a href="#">
             <img  class="offer" src="../assets/offers.png" >
-            </a>
+            </a></div>
             <div class="dropdown">
                 <img  class="filter" src="../assets/filter.png" width="10" height="10" [matMenuTriggerFor]="menu">
                 <mat-menu #menu="matMenu" class="drop">
@@ -14,11 +13,10 @@
                     <mat-checkbox>Price</mat-checkbox><br>
                     <mat-checkbox>Ratings</mat-checkbox><br>
                   </mat-menu>
-              </div>
+            </div>
 <!--         
         <input class="flexsearch--submit fa fa-filter" type="button" value="&#xf0b0;">
         <input class="flexsearch--submit1 fa fa-filter" type="button" value=""/>
          -->
 			</form>
   </div>
-  

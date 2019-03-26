@@ -1,4 +1,8 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import {MatBottomSheet, MatBottomSheetRef} from '@angular/material';
+import { CartComponent } from '../cart/cart.component';
+import { LoginComponent } from '../login/login.component';
+
 
 @Component({
   selector: 'app-footer',
@@ -6,9 +10,6 @@ import { Component, OnInit, HostListener } from '@angular/core';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-
-  prevScroll: any;
-  shownavbar: boolean;
 
   orders = [
     {
@@ -27,9 +28,15 @@ export class FooterComponent implements OnInit {
       quantity : 1,
     }
   ]
-  constructor() { }
+  prevScroll: any;
+  shownavbar: boolean;
+  
+  constructor(private bottomSheet : MatBottomSheet) { }
 
- 
+  ngOnInit() {
+    this.prevScroll = 0;
+    this.shownavbar = true;
+  }
 
   quantityIncrement(id : any){
     let i = 0;
@@ -48,9 +55,9 @@ export class FooterComponent implements OnInit {
       }
     }
   }
-  ngOnInit() {
-    this.prevScroll = 0;
-    this.shownavbar = true;
+
+  openBottomCart() {
+    this.bottomSheet.open(CartComponent)
   }
 
   @HostListener('window:scroll', ['$event'])

@@ -6,39 +6,41 @@
     background: #FF9500;
 }
 .heart{
-    width: 1px !important;
-    padding: 15px;
-    height: 40px;
+    width: 31px !important;
+    padding: 6px;
+    /* height: 40px; */
 }
+
 .searchbar{
     width:100px;
 }
+.cart{
+    width: 31px !important;
+    padding: 6px;
+    /* height: 40px; */
+}
+.user{
+    width: 27px !important;
+    padding: 6px;
+    /* height: 40px; */
+}
 
 .search{
-    padding: 10px;
-    margin-right: 119px;
-    width: 7px;
-    height: 34px;
+    width: 132px !important;
+    padding: 14px;
+    /* height: 45px; */
 }
 .active{
     border-block-end-style: solid;
     border-color: #FF9500;
     width:30px;
-    margin-top: 10px;
     transition-delay: 0.1s;
+  
 }
-.fa fa-search{
-    height:10px;
-}
+
 
 .orange-color {
     background: #FF9500;
-}
-.bar1{
-    transition: top 2s;
-}
-.bar2{
-    transition: 2s;
 }
 .bar{
     height: 62px;
@@ -50,6 +52,7 @@
     margin-top: 45px;
     /* margin-left: -13px; */
     text-align: center;
+    margin-left: 5px;
     border-radius: 156px;
 
 }

@@ -11,15 +11,31 @@
   <div class="scrolling-wrapper">
     <mat-grid-list cols={{deals.length}} rowHeight="130px">
       <mat-grid-tile *ngFor="let deal of deals" [rowspan]="1" [colspan]="1">
-        <div class="card" style="width:190px;">
-          <div class="img-round-wrapper float-left ml-1 mt-1 mb-1 mr-2">
-            <img src="../../assets/dish_2.jpg" class="deal_img">
+        <div class="card card_deal">
+          <div class="row">
+            <div class="col-xs-6">
+                <div class="img-round-wrapper text-center mt-1">
+                    <img src="../../assets/dish_2.jpg" class="res_img">
+                  </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="row">
+                <div class="col-xs-12">
+                    <span><b>{{deal.dish_name}}</b></span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                    <span class="fa fa-map-marker fa-small mr-1"></span>{{deal.restaurant_location}}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                    <span>{{"Rs " + deal.dish_price}}</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <span><b>{{deal.dish_name}}</b></span>
-          <br>
-          <span class="fa fa-map-marker fa-small mr-1"></span>{{deal.restaurant_location}}
-          <br>
-          <span>{{"Rs " + deal.dish_price}}</span>
         </div>
       </mat-grid-tile>
     </mat-grid-list>
@@ -35,49 +51,87 @@
           <span><b>{{pdish.dish_category}}</b></span>
         </div>
         <div class="scrolling-wrapper">
-          <mat-grid-list cols={{pdish.dish_deatails.length}} rowHeight="240px">
-            <mat-grid-tile *ngFor="let deal of pdish.dish_deatails" [rowspan]="1" [colspan]="1">
-                <div class="card" style="width: 169px;height: 222px;">
-                <div class="dish">
-                  <img src="../../assets/dish_1.jpg" style="width: 148px; height:100px;border-radius:12px;margin-left:10px;margin-top:10px">
+          <mat-grid-list cols={{pdish.dish_deatails.length}} rowHeight="250px">
+            <mat-grid-tile *ngFor="let deal of pdish.dish_deatails" [routerLink]="['/restaurant', 1]" [rowspan]="1"
+              [colspan]="1">
+              <div class="card card_dish text-center">
+                  <div>
+                    <div class="row">
+                      <div class="col-xs-12 mt-1">
+                        <img src="../../assets/dish_2.jpg" class="deal_img">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <span><b>{{deal.dish_name}}</b></span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12">
+                          <span>{{deal.restaurant_location}}</span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-4 mt-2 mr-2">
+                        <span><b>{{"Rs "}}</b></span><span id="green">{{deal.dish_price}}</span>
+                      </div>
+                      <div class="col-xs-8 button-box">
+                        <div *ngIf="dishSelected" class="mt-2 mb-1">
+                          <span class="fa fa-minus fa-lg mr-2" (click)="quantityDecrement(deal.dish_id)"></span>
+                          <span class="mr-2">{{deal.quantity}}</span>
+                          <span class="fa fa-plus mr-1 fa-lg" (click)="quantityIncrement(deal.dish_id)"></span>
+                        </div>
+                        <div *ngIf="!dishSelected">
+                          <a role="button" class="btn btn-default" (click)="dishAddedToCart(deal.dish_id)">Add</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="card-body">
-                  <span><b>{{deal.dish_name}}</b></span><br>
-                  <span>{{deal.restaurant_location}}</span><br>
-                  <span>{{"Rs " + deal.dish_price}}</span>
-                </div>
-                <br>
-              </div>
             </mat-grid-tile>
           </mat-grid-list>
-          </div>
+        </div>
       </div>
 
     </mat-tab>
     <mat-tab label="Near me">
-      <div *ngFor="let restaurant of restaurantsNearBy">
-        <div class="card m-2" style="width: 100%">
-          <div class="card-body">
-            <div class="float-left m-1">
-              <img src="../../assets/kfc.png" class="res_img" alt="res_img">
-            </div>
-
-            <div class="row">
-              <div class="col-sm">
-                <span>{{restaurant.restaurant_name}}</span>
+      <div *ngFor="let restaurant of restaurantsNearBy" class="m-2">
+        <div class="card" (click)="multipleBranches && openBottomSheet()" >
+          <div>
+            <div class="row m-2">
+              <div class="col-xs-4 text-center">
+                <img src="../../assets/kfc.png" class="res_img" alt="res_img">
               </div>
-            </div>
-            <div class="row">
-              <div class="col-sm">
-                <span>{{restaurant.restaurant_location}}</span>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm">
-                <span class="fa fa-star fa-small">{{restaurant.ratings}}</span>
-                <span class="fa fa-map-marker fa-small ml-4">{{restaurant.distance}}</span>
-                <span class="fa fa-heart fa-small ml-4"></span>
+              <div class="col-xs-8 ml-2">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <span>{{restaurant.restaurant_name}}</span>
+                  </div>
+                  <div class="col-xs-6">
+                    <!--repace this with a veg/non-veg symbol-->
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div *ngIf="multipleBranches">
+                      <span>{{ "3 Branches"}}</span>
+                    </div>
+                    <div *ngIf="!multipleBranches">
+                      <span>{{restaurant.restaurant_location}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-4">
+                    <span class="fa fa-star fa-small">{{restaurant.ratings}}</span>
+                  </div>
+                  <div class="col-xs-4">
+                    <span class="fa fa-map-marker fa-small ml-4">{{restaurant.distance}}</span>
+                  </div>
+                  <div class="col-xs-4">
+                    <span class="fa fa-heart fa-small ml-4"></span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -28,8 +28,7 @@ export class CustomizationComponent implements OnInit {
   openSnackBar() {
     console.log("Snack bar")
     let config = new MatSnackBarConfig();
-    config.duration = 5000;
-    config.panelClass = ['yellow-snackbar'];
+    config.panelClass = ['yellow-snack'];
     // this.snackBar.openFromComponent(SnackbarComponent, {
     //   duration: 5*1000,
     //   panelClass: ['yellow-snackbar']
