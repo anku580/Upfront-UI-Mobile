@@ -82,3 +82,8 @@ mat-grid-list {
     width: 90.4px;
 }
 
+.text-center {
+
+    margin-left : auto;
+    margin-right : auto;
+}

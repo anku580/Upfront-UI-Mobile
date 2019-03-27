@@ -68,7 +68,7 @@ mat-grid-list {
 
 .reduce-height {
     height : 200px;
-    width : 350px;
+    width : 100%;
 }
 
 .blue-snackbar {

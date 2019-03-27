@@ -4,7 +4,11 @@ import {MatBottomSheet, MatBottomSheetRef} from '@angular/material';
 import { CustomizationComponent } from '../customization/customization.component';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
 import { Location } from '@angular/common';
+import { Params, ActivatedRoute, Router } from '@angular/router';
+import { NearbyRestaurantService } from '../service/nearby-restaurant.service';
+import { switchMap } from 'rxjs/operators';
 
+import { RestaurantDetailService } from '../service/restaurant-detail.service';
 
 @Component({
   selector: 'app-restaurant-detail',
@@ -24,158 +28,177 @@ export class RestaurantDetailComponent implements OnInit {
   private dishSelected = false;
   private Quantity;
   private favorite = false;
+  private restaurantDetail;
 
-  private restaurantDetail = [
-    {
-      category : "Starters",
-      dishes : [
-        {
-          dish_id : 1,
-          dish_name : "Chicken soup",
-          dish_price : 120,
-          imgURL : "abc",
-          quantity : 0,
-          is_selected : false
-        },
-        {
-          dish_id : 2,
-          dish_name : "Chicken soup",
-          dish_price : 120,
-          imgURL : "abc",
-          quantity : 0,
-          is_selected : false
-        },
-        {
-          dish_id : 3,
-          dish_name : "Chicken soup",
-          dish_price : 120,
-          imgURL : "abc",
-          quantity : 0,
-          is_selected : false
-        },
-        {
-          dish_id : 1,
-          dish_name : "Chicken soup",
-          dish_price : 120,
-          imgURL : "abc",
-          quantity : 0,
-          is_selected : false
-        },
-        {
-          dish_id : 1,
-          dish_name : "Chicken soup",
-          dish_price : 120,
-          imgURL : "abc",
-          quantity : 0,
-          is_selected : false
-        },
-        {
-          dish_id : 1,
-          dish_name : "Chicken soup",
-          dish_price : 120,
-          imgURL : "abc",
-          quantity : 0,
-          is_selected : false
-        },
-        {
-          dish_id : 1,
-          dish_name : "Chicken soup",
-          dish_price : 120,
-          imgURL : "abc",
-          quantity : 0,
-          is_selected : false
-        },
-        {
-          dish_id : 1,
-          dish_name : "Chicken soup",
-          dish_price : 120,
-          imgURL : "abc",
-          quantity : 0,
-          is_selected : false
-        },
-        {
-          dish_id : 1,
-          dish_name : "Chicken soup",
-          dish_price : 120,
-          imgURL : "abc",
-          quantity : 0,
-          is_selected : false
-        },
-        {
-          dish_id : 1,
-          dish_name : "Chicken soup",
-          dish_price : 120,
-          imgURL : "abc",
-          quantity : 0,
-          is_selected : false
-        }
-      ]
-    },
-    {
-      category : "Main Course",
-      dishes : [
-        {
-          dish_id : 4,
-          dish_name : "Chicken soup",
-          dish_price : 120,
-          imgURL : "abc",
-          quantity : 0,
-          is_selected : false
-        },
-        {
-          dish_id : 5,
-          dish_name : "Chicken soup",
-          dish_price : 120,
-          imgURL : "abc",
-          quantity : 0,
-          is_selected : false
-        },
-        {
-          dish_id : 6,
-          dish_name : "Chicken soup",
-          dish_price : 120,
-          imgURL : "abc",
-          quantity : 0,
-          is_selected : false
-        }
-      ]
-    },
-    {
-      category : "Dessert",
-      dishes : [
-        {
-          dish_id : 7,
-          dish_name : "Chicken soup",
-          dish_price : 120,
-          imgURL : "abc",
-          quantity : 0,
-          is_selected : false
-        },
-        {
-          dish_id : 8,
-          dish_name : "Chicken soup",
-          dish_price : 120,
-          imgURL : "abc",
-          quantity : 0,
-          is_selected : false
-        },
-        {
-          dish_id : 9,
-          dish_name : "Chicken soup",
-          dish_price : 120,
-          imgURL : "abc",
-          quantity : 0,
-          is_selected : false
-        }
-      ]
-    }
-  ]
+  // private restaurantDetail = [
+  //   {
+  //     category : "Starters",
+  //     dishes : [
+  //       {
+  //         dish_id : 1,
+  //         dish_name : "Chicken soup",
+  //         dish_price : 120,
+  //         imgURL : "abc",
+  //         quantity : 0,
+  //         is_selected : false
+  //       },
+  //       {
+  //         dish_id : 2,
+  //         dish_name : "Chicken soup",
+  //         dish_price : 120,
+  //         imgURL : "abc",
+  //         quantity : 0,
+  //         is_selected : false
+  //       },
+  //       {
+  //         dish_id : 3,
+  //         dish_name : "Chicken soup",
+  //         dish_price : 120,
+  //         imgURL : "abc",
+  //         quantity : 0,
+  //         is_selected : false
+  //       },
+  //       {
+  //         dish_id : 1,
+  //         dish_name : "Chicken soup",
+  //         dish_price : 120,
+  //         imgURL : "abc",
+  //         quantity : 0,
+  //         is_selected : false
+  //       },
+  //       {
+  //         dish_id : 1,
+  //         dish_name : "Chicken soup",
+  //         dish_price : 120,
+  //         imgURL : "abc",
+  //         quantity : 0,
+  //         is_selected : false
+  //       },
+  //       {
+  //         dish_id : 1,
+  //         dish_name : "Chicken soup",
+  //         dish_price : 120,
+  //         imgURL : "abc",
+  //         quantity : 0,
+  //         is_selected : false
+  //       },
+  //       {
+  //         dish_id : 1,
+  //         dish_name : "Chicken soup",
+  //         dish_price : 120,
+  //         imgURL : "abc",
+  //         quantity : 0,
+  //         is_selected : false
+  //       },
+  //       {
+  //         dish_id : 1,
+  //         dish_name : "Chicken soup",
+  //         dish_price : 120,
+  //         imgURL : "abc",
+  //         quantity : 0,
+  //         is_selected : false
+  //       },
+  //       {
+  //         dish_id : 1,
+  //         dish_name : "Chicken soup",
+  //         dish_price : 120,
+  //         imgURL : "abc",
+  //         quantity : 0,
+  //         is_selected : false
+  //       },
+  //       {
+  //         dish_id : 1,
+  //         dish_name : "Chicken soup",
+  //         dish_price : 120,
+  //         imgURL : "abc",
+  //         quantity : 0,
+  //         is_selected : false
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     category : "Main Course",
+  //     dishes : [
+  //       {
+  //         dish_id : 4,
+  //         dish_name : "Chicken soup",
+  //         dish_price : 120,
+  //         imgURL : "abc",
+  //         quantity : 0,
+  //         is_selected : false
+  //       },
+  //       {
+  //         dish_id : 5,
+  //         dish_name : "Chicken soup",
+  //         dish_price : 120,
+  //         imgURL : "abc",
+  //         quantity : 0,
+  //         is_selected : false
+  //       },
+  //       {
+  //         dish_id : 6,
+  //         dish_name : "Chicken soup",
+  //         dish_price : 120,
+  //         imgURL : "abc",
+  //         quantity : 0,
+  //         is_selected : false
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     category : "Dessert",
+  //     dishes : [
+  //       {
+  //         dish_id : 7,
+  //         dish_name : "Chicken soup",
+  //         dish_price : 120,
+  //         imgURL : "abc",
+  //         quantity : 0,
+  //         is_selected : false
+  //       },
+  //       {
+  //         dish_id : 8,
+  //         dish_name : "Chicken soup",
+  //         dish_price : 120,
+  //         imgURL : "abc",
+  //         quantity : 0,
+  //         is_selected : false
+  //       },
+  //       {
+  //         dish_id : 9,
+  //         dish_name : "Chicken soup",
+  //         dish_price : 120,
+  //         imgURL : "abc",
+  //         quantity : 0,
+  //         is_selected : false
+  //       }
+  //     ]
+  //   }
+  // ]
+  private restaurantId;
   constructor(private snackBar: MatSnackBar,
     private bottomSheet: MatBottomSheet,
-    private location : Location) { }
+    private location : Location,
+    private nearbyRestaurantService : NearbyRestaurantService,
+    private router : Router,
+    private route : ActivatedRoute,
+    // private eachDish : any
+    private restaurantService : RestaurantDetailService) { }
 
   ngOnInit() {
     // console.log(this.restaurantDetail[0].dishes)
+
+    this.route.params.pipe(switchMap((params: Params) => {
+      this.restaurantId = params['id'];
+      console.log(this.restaurantId)
+      localStorage.setItem('restaurantId', JSON.stringify(this.restaurantId));
+
+      return this.restaurantService.getRestaurantDetail(this.restaurantId);
+    }))
+      .subscribe(menu => {
+        this.restaurantDetail = menu.menu_list; 
+        console.log(this.restaurantDetail[0].menus)
+      })
   }
 
   openBottomSheet(){

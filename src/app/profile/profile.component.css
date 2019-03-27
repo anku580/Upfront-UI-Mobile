@@ -14,7 +14,53 @@ a {
     font-size : 16px
 }
 
-.container-fluid {
-    padding-top : 20px;
+/* .container-fluid {
+    padding-top : 2px;
+} */
+
+.row {
+    padding : 5px;
 }
 
+.box {
+    background: #F5F5F5;
+}
+
+.btn-default {
+    border : 1px solid #FF9500;
+    width: 120px;
+}
+
+.back-color {
+    background : white;
+}
+
+.user {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    /* border : 1px solid black; */
+}
+
+.btn-secondary {
+    background: #FF9500;
+    width: 120px;
+    border : 1px solid #FF9500;
+}
+
+.btn-color {
+    background: #EEEEEE;
+    width: 120px;
+}
+
+.modal {
+    top: 40vh;
+}
+
+.col-xs-6{
+    padding : 4px;
+}

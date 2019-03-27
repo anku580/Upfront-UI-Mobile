@@ -5,7 +5,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 body {
-    background-color: #F5F5F5
+    background-color: #F5F5F5;    /*#F5F5F5*/
 }
 
 .col-xs-2 {
@@ -58,4 +58,9 @@ body {
     background-image: linear-gradient(to left,rgb(243, 228, 20),#FF9500);   
     max-width: 100% !important;
     width: 100%; 
+}
+
+.back-color {
+    width: 100vw;
+    height: 100vh;
 }

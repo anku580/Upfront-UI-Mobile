@@ -43,6 +43,8 @@ import { OrderHistoryDetailsComponent } from './order-history-details/order-hist
 import { OffersComponent } from './offers/offers.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { NearbyRestaurantService } from './service/nearby-restaurant.service';
+import { RestaurantDetailService } from './service/restaurant-detail.service';
 
 const routes : Routes = [
   { path: '', redirectTo: 'signup', pathMatch: 'full'},
@@ -106,7 +108,9 @@ const routes : Routes = [
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
-  },  
+  },
+  NearbyRestaurantService,
+  RestaurantDetailService 
 ],
   bootstrap: [AppComponent],
   entryComponents : [CustomizationComponent, SnackbarComponent, CartComponent, FooterComponent, MultipleBranchComponent]

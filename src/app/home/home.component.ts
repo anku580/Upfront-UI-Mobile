@@ -2,6 +2,9 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material';
 import { ChangeDetectorRef, Component, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { MultipleBranchComponent } from '../multiple-branch/multiple-branch.component';
+import { Router } from '@angular/router';
+
+import { NearbyRestaurantService } from '../service/nearby-restaurant.service';
 
 @Component({
   selector: 'app-home',
@@ -258,48 +261,51 @@ export class HomeComponent implements OnDestroy {
     }
   ]
 
-  restaurantsNearBy = [
-    {
-      restaurant_name : "KFC",
-      restaurant_location : "Indira Nagar",
-      ratings : "4.8",
-      distance : "1.2",
-      is_veg : "false"
-    },
-    {
-      restaurant_name : "KFC",
-      restaurant_location : "Indira Nagar",
-      ratings : "4.8",
-      distance : "1.2",
-      is_veg : "false"
-    },
-    {
-      restaurant_name : "KFC",
-      restaurant_location : "Indira Nagar",
-      ratings : "4.8",
-      distance : "1.2",
-      is_veg : "false"
-    },
-    {
-      restaurant_name : "KFC",
-      restaurant_location : "Indira Nagar",
-      ratings : "4.8",
-      distance : "1.2",
-      is_veg : "false"
-    },
-    {
-      restaurant_name : "KFC",
-      restaurant_location : "Indira Nagar",
-      ratings : "4.8",
-      distance : "1.2",
-      is_veg : "false"
-    }
-  ]
+  private restaurantsNearBy;
+  // restaurantsNearBy = [
+  //   {
+  //     restaurant_name : "KFC",
+  //     restaurant_location : "Indira Nagar",
+  //     ratings : "4.8",
+  //     distance : "1.2",
+  //     is_veg : "false"
+  //   },
+  //   {
+  //     restaurant_name : "KFC",
+  //     restaurant_location : "Indira Nagar",
+  //     ratings : "4.8",
+  //     distance : "1.2",
+  //     is_veg : "false"
+  //   },
+  //   {
+  //     restaurant_name : "KFC",
+  //     restaurant_location : "Indira Nagar",
+  //     ratings : "4.8",
+  //     distance : "1.2",
+  //     is_veg : "false"
+  //   },
+  //   {
+  //     restaurant_name : "KFC",
+  //     restaurant_location : "Indira Nagar",
+  //     ratings : "4.8",
+  //     distance : "1.2",
+  //     is_veg : "false"
+  //   },
+  //   {
+  //     restaurant_name : "KFC",
+  //     restaurant_location : "Indira Nagar",
+  //     ratings : "4.8",
+  //     distance : "1.2",
+  //     is_veg : "false"
+  //   }
+  // ]
 
-  private multipleBranches = true;
+  private multipleBranches = false;
+  private favorite = false;
 
-
-  constructor(private bottomSheet: MatBottomSheet) {
+  constructor(private bottomSheet: MatBottomSheet,
+    private nearbyRestaurantService: NearbyRestaurantService,
+    private router: Router) {
 
   }
 
@@ -311,9 +317,27 @@ export class HomeComponent implements OnDestroy {
   openBottomSheet(): void {
     this.bottomSheet.open(MultipleBranchComponent);
   }
+  
+  ngOnInit() {
+
+    this.nearbyRestaurantService.getNearbyRestaurants(12, 12)
+    .subscribe((restaurants) => {
+      this.restaurantsNearBy = restaurants.restaurants;
+    })
+
+  }
 
   ngOnDestroy(): void {
 
+  }
+
+  addToFavourite(id : any) {
+    this.favorite = true;
+    console.log("Favorite:", id);
+  }
+
+  restaurantDetail(resId : number) {
+    this.router.navigateByUrl(`/restaurant/${resId}`);
   }
 
 
