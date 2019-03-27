@@ -37,6 +37,7 @@ import { OrderHistoryDetailsComponent } from './order-history-details/order-hist
 import { OffersComponent } from './offers/offers.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { ListofdishesComponent } from './listofdishes/listofdishes.component';
 
 const routes : Routes = [
   { path: '', redirectTo: 'signup', pathMatch: 'full'},
@@ -49,7 +50,8 @@ const routes : Routes = [
   { path: 'profile', component: ProfileComponent},
   { path: 'orderhistory', component: OrderHistoryComponent},
   { path: 'offers', component : OffersComponent},
-  { path: 'welcomePage', component: WelcomePageComponent}
+  { path: 'welcomePage', component: WelcomePageComponent},
+  { path: 'listofdishes', component: ListofdishesComponent}
 
 ]
 
@@ -71,7 +73,8 @@ const routes : Routes = [
     MultipleBranchComponent,
     OrderHistoryDetailsComponent,
     OffersComponent,
-    WelcomePageComponent
+    WelcomePageComponent,
+    ListofdishesComponent
   ],
   imports: [
     BrowserModule,
