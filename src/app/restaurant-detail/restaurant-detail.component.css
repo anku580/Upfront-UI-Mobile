@@ -5,25 +5,64 @@
 .space_top {
     margin-top : 30px;
 }
-
-
+/* .mat-button{
+    position: fixed !important;
+    background: black;
+    z-index: 10;
+    
+} */
 .text_size {
     font-size : 20px
 }
+#floatbutton{
+    color: white;
+    background-color: black;
+    position: fixed;
+    right: 2%;
+    bottom: 3%;
+    z-index: 10;
+    width: 93px;
+    border-radius: 27px;
+    /* height: 33px; */
+    vertical-align: middle;
+    text-align: center;
+    -webkit-animation-name: bgchange;
+    animation-name: bgchange;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
 
+}
+/* The animation code */
+@keyframes bgchange {
+    from {background-color: rgba(248, 190, 0, 0.63);}
+    to {background-color: #ff9500;}
+  }
+.mat-menu-item{
+    outline:none !important;
+}
+#floatbutton:focus{
+    outline:none !important;
+    outline:none !important;
+}
+.mat-button{
+    outline:none !important;
+    outline:none !important;
+}
 .scrolling-wrapper {
     overflow-x: scroll;
     overflow-y: hidden;
-    white-space: nowrap;
-  
+    white-space: nowrap;  
 }
+
 
 ::-webkit-scrollbar { 
     display: none; 
 }
 
 .yellow-snackbar {
-    background-color: #FF9500
+    background-color: #FF9500;
 }
 
 .deal_img {

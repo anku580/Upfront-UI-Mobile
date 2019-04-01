@@ -1,5 +1,5 @@
-row {
-    margin : 5px;
+.row {
+    margin : 1px;
 }
 
 .space_top {
@@ -34,9 +34,9 @@ row {
 }
 
 .card {
-    display: inline-block;
+    
     height : 240px;
-    width: 180px;
+
 }
 
 .card:hover {
@@ -58,6 +58,10 @@ mat-grid-list {
     width: 90.4px;
 }
 
+.heart{
+    float:right;
+}
+
 .image-top {
     margin-top : 7px;
 }
@@ -74,3 +78,52 @@ mat-grid-list {
 .blue-snackbar {
     background: #2196F3;
 }
+#main {
+    width: 400px;
+    height: 100px;
+    border: 1px solid #c3c3c3;
+    display: -webkit-flex; /* Safari */
+    -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+    border-color: aliceblue;
+    border-radius: 10px;
+  }
+  
+  .flex-container {
+    background-color: white;
+    border:2px;
+    border-color:black;
+    border-radius:10px;
+  }
+  .add{
+      float:right;
+      width:100px;
+      padding:0px;
+  }
+  .card{
+    position: relative;
+    /* min-width: 62px; */
+    
+    height: 114px;
+    border-radius:5px;
+  }
+  
+  .img1{
+    width: 141px;
+    border-radius: 11px;
+    padding: 3px;
+    margin-top: 2px;
+    height: 107px;
+  }
+  /* .dish1{
+      margin-left:-34px;
+  }
+  .star{  
+    margin-left: -30px;
+  }
+  .rupee{
+    margin-left: -25px;
+  /* }  */
+ 

@@ -112,7 +112,7 @@ export class RestaurantDetailComponent implements OnInit {
       ]
     },
     {
-      category : "Main Course",
+      category : "MainCourse",
       dishes : [
         {
           dish_id : 4,
