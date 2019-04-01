@@ -17,8 +17,8 @@
 
 .res_img {
     display: inline-block;
-    width: 70px;
-    height: 70px;
+    width: 120px;
+    height: 90px;
     background-repeat: no-repeat;
     /* background-position: center center; */
     background-size: cover;

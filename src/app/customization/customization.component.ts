@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material';
 import {RestaurantDetailComponent} from '../restaurant-detail/restaurant-detail.component'
 import { SnackbarComponent } from '../snackbar/snackbar.component';
+import {MAT_BOTTOM_SHEET_DATA} from '@angular/material';
+
+import { RestaurantDetailService } from '../service/restaurant-detail.service';
 
 @Component({
   selector: 'app-customization',
@@ -11,12 +14,47 @@ import { SnackbarComponent } from '../snackbar/snackbar.component';
 })
 export class CustomizationComponent implements OnInit {
 
-  constructor(private bottomSheetRef: MatBottomSheetRef<RestaurantDetailComponent>,
-    private snackBar: MatSnackBar,) {
-    
+  private dishId;
+  private restaurantId;
+  public customisationData = [
+    {
+      name : "Toppings",
+      price : 10
+    },
+    {
+      name : "Toppings",
+      price : 10
+    },
+    {
+      name : "Toppings",
+      price : 10
+    },
+    {
+      name : "Toppings",
+      price : 10
+    }
+  ];
+
+  constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public data: any,
+    private bottomSheetRef: MatBottomSheetRef<RestaurantDetailComponent>,
+    private snackBar: MatSnackBar,
+    private restaurantService : RestaurantDetailService) {
+      // console.log("Data of customisation", data);
+      this.dishId = data.dish_id;
+      this.restaurantId = data.restaurant_id;
    }
 
   ngOnInit() {
+  
+    // this.loadContentToCustomisation();
+    console.log(this.customisationData);
+  }
+
+  loadContentToCustomisation() {
+    this.restaurantService.getIndividualDish(this.restaurantId, this.dishId)
+    .subscribe((output) => {
+      this.customisationData = output.customizations;
+    })
   }
 
   openLink() {

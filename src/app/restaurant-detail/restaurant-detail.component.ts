@@ -9,6 +9,7 @@ import { NearbyRestaurantService } from '../service/nearby-restaurant.service';
 import { switchMap } from 'rxjs/operators';
 
 import { RestaurantDetailService } from '../service/restaurant-detail.service';
+import { CartService } from '../service/cart.service';
 
 @Component({
   selector: 'app-restaurant-detail',
@@ -183,7 +184,8 @@ export class RestaurantDetailComponent implements OnInit {
     private router : Router,
     private route : ActivatedRoute,
     // private eachDish : any
-    private restaurantService : RestaurantDetailService) { }
+    private restaurantService : RestaurantDetailService,
+    private cartService : CartService) { }
 
   ngOnInit() {
     // console.log(this.restaurantDetail[0].dishes)
@@ -193,7 +195,7 @@ export class RestaurantDetailComponent implements OnInit {
       console.log(this.restaurantId)
       localStorage.setItem('restaurantId', JSON.stringify(this.restaurantId));
 
-      return this.restaurantService.getRestaurantDetail(this.restaurantId);
+      return this.restaurantService.getRestaurantMenu(this.restaurantId);
     }))
       .subscribe(menu => {
         this.restaurantDetail = menu.menu_list; 
@@ -201,8 +203,10 @@ export class RestaurantDetailComponent implements OnInit {
       })
   }
 
-  openBottomSheet(){
-    this.bottomSheet.open(CustomizationComponent)
+  openBottomSheet(id : Number){
+    this.bottomSheet.open(CustomizationComponent, {
+      data : {dish_id : id, restaurant_id : this.restaurantId},
+    })
     
     // this.openSnackBar();
   }
@@ -225,9 +229,11 @@ export class RestaurantDetailComponent implements OnInit {
     return false;
   }
 
-  dishAddedToCart(id) {
-    // this.openSnackBar();
-    this.openBottomSheet();
+  dishAddedToCart(dishId : Number) {
+    
+    console.log("This is dish id:", dishId)
+    this.cartService.addItemToCart(dishId, 1);
+    this.openBottomSheet(dishId);
     this.dishSelected = true;
   }
 

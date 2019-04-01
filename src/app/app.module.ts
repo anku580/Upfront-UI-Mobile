@@ -28,6 +28,12 @@ import {
 } from '@angular/material';
 import {ScrollDispatchModule} from '@angular/cdk/scrolling';
 import {MatTabsModule} from '@angular/material/tabs';
+
+import { NearbyRestaurantService } from './service/nearby-restaurant.service';
+import { RestaurantDetailService } from './service/restaurant-detail.service';
+import { CartService } from './service/cart.service';
+
+
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CartComponent } from './cart/cart.component';
@@ -43,8 +49,9 @@ import { OrderHistoryDetailsComponent } from './order-history-details/order-hist
 import { OffersComponent } from './offers/offers.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
-import { NearbyRestaurantService } from './service/nearby-restaurant.service';
-import { RestaurantDetailService } from './service/restaurant-detail.service';
+import { PaymentComponent } from './payment/payment.component';
+import { PaymentmodeComponent } from './paymentmode/paymentmode.component';
+
 
 const routes : Routes = [
   { path: '', redirectTo: 'signup', pathMatch: 'full'},
@@ -57,7 +64,9 @@ const routes : Routes = [
   { path: 'profile', component: ProfileComponent},
   { path: 'orderhistory', component: OrderHistoryComponent},
   { path: 'offers', component : OffersComponent},
-  { path: 'welcomePage', component: WelcomePageComponent}
+  { path: 'welcomePage', component: WelcomePageComponent},
+  { path: 'payment', component: PaymentComponent },
+  { path: 'payment/type', component: PaymentmodeComponent}
 
 ]
 
@@ -79,7 +88,9 @@ const routes : Routes = [
     MultipleBranchComponent,
     OrderHistoryDetailsComponent,
     OffersComponent,
-    WelcomePageComponent
+    WelcomePageComponent,
+    PaymentComponent,
+    PaymentmodeComponent
   ],
   imports: [
     BrowserModule,
@@ -99,6 +110,7 @@ const routes : Routes = [
     ScrollDispatchModule,
   ],
   providers: [{ provide : 'baseURL', useValue : baseURL},
+  // {provide: MAT_BOTTOM_SHEET_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
   {
     provide: HTTP_INTERCEPTORS,
     useClass: UnauthorizedInterceptor,
@@ -110,7 +122,8 @@ const routes : Routes = [
     multi: true
   },
   NearbyRestaurantService,
-  RestaurantDetailService 
+  RestaurantDetailService,
+  CartService 
 ],
   bootstrap: [AppComponent],
   entryComponents : [CustomizationComponent, SnackbarComponent, CartComponent, FooterComponent, MultipleBranchComponent]

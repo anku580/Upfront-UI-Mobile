@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import {MatSnackBar, MatSnackBarConfig} from '@angular/material';
+import {MatSnackBar} from '@angular/material';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
-import {MatBottomSheet, MatBottomSheetRef} from '@angular/material';
+// import {MatBottomSheet, MatBottomSheetRef} from '@angular/material';
 
 @Component({
   selector: 'app-cart',
@@ -68,7 +68,7 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
 
-    this.openSnackBar();
+    // this.openSnackBar();
     
   }
 

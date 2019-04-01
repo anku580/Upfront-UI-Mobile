@@ -16,8 +16,9 @@ export class AppComponent {
   constructor(private router: Router) {
     // on route change to '/login', set the variable showHead to false
       router.events.forEach((event) => {
+        console.log(event)
         if (event instanceof NavigationStart) {
-          if (event['url'] == '/login' || event['url'] == '/signup') {
+          if (event['url'] == '/login' || event['url'] == '/signup' || event['url'] == '/restaurant/1') {
             this.showHead = false;
           } else {
             // console.log("NU")
