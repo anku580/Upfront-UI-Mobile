@@ -64,3 +64,7 @@ a {
 .col-xs-6{
     padding : 4px;
 }
+
+.overflow-handling {
+    overflow-x: hidden;
+}

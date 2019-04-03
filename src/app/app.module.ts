@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanActivate } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,6 +32,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { NearbyRestaurantService } from './service/nearby-restaurant.service';
 import { RestaurantDetailService } from './service/restaurant-detail.service';
 import { CartService } from './service/cart.service';
+import { AuthGuardService } from './service/auth-guard.service';
+import { AuthGuardService as AuthGuard } from './service/auth-guard.service';
 
 
 import { HeaderComponent } from './header/header.component';
@@ -123,7 +125,8 @@ const routes : Routes = [
   },
   NearbyRestaurantService,
   RestaurantDetailService,
-  CartService 
+  CartService,
+  AuthGuardService 
 ],
   bootstrap: [AppComponent],
   entryComponents : [CustomizationComponent, SnackbarComponent, CartComponent, FooterComponent, MultipleBranchComponent]

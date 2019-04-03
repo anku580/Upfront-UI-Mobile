@@ -1,10 +1,12 @@
-import { MediaMatcher } from '@angular/cdk/layout';
-import {MatBottomSheet, MatBottomSheetRef} from '@angular/material';
-import { ChangeDetectorRef, Component, OnDestroy, ViewEncapsulation } from '@angular/core';
+import {MatBottomSheet} from '@angular/material';
+import { Component, OnDestroy, ViewEncapsulation, ViewChild } from '@angular/core';
 import { MultipleBranchComponent } from '../multiple-branch/multiple-branch.component';
 import { Router } from '@angular/router';
+import { } from 'googlemaps';
+import { AppComponent } from '../app.component';
 
 import { NearbyRestaurantService } from '../service/nearby-restaurant.service';
+import { FavoritesService } from '../service/favorites.service';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +15,8 @@ import { NearbyRestaurantService } from '../service/nearby-restaurant.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnDestroy {
-  mobileQuery: MediaQueryList;
+
+ 
   private dishSelected = false;
   deals = [
     {
@@ -305,7 +308,9 @@ export class HomeComponent implements OnDestroy {
 
   constructor(private bottomSheet: MatBottomSheet,
     private nearbyRestaurantService: NearbyRestaurantService,
-    private router: Router) {
+    private router: Router,
+    private favouriteService : FavoritesService,
+    private appComponent : AppComponent) {
 
   }
 
@@ -320,7 +325,7 @@ export class HomeComponent implements OnDestroy {
   
   ngOnInit() {
 
-    this.nearbyRestaurantService.getNearbyRestaurants(12, 12)
+    this.nearbyRestaurantService.getNearbyRestaurants(this.appComponent.currentLat, this.appComponent.currentLong)
     .subscribe((restaurants) => {
       this.restaurantsNearBy = restaurants.restaurants;
     })

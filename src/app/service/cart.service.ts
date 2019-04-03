@@ -25,14 +25,14 @@ export class CartService {
   incrementDishQuantity(itemId : Number, quantity : Number) : Observable<any> {
     return this.http.post(`${baseURL}cart/item/quantity/increase`, {
       itemId : itemId,
-      quantity : quantity
+      quantity : 1
     })
   }
 
   decreaseDishQuantity(itemId : Number, quantity : Number) : Observable<any> {
     return this.http.post(`${baseURL}cart/item/quantity/decrease`, {
       itemId : itemId,
-      quantity : quantity
+      quantity : 1
     })
   }
 

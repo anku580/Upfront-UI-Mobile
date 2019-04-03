@@ -11,10 +11,10 @@ export class RestaurantDetailService {
   constructor(private http: HttpClient) { }
   
   getRestaurantMenu(id : number) : Observable<any> {
-    return this.http.get(`${baseURL}menu/api/v1/restaurants/${id}/menu`);
+    return this.http.get(`${baseURL}menu/api/v1/restaurants/${id}/menu/merchantview`);
   }
 
   getIndividualDish(restaurant_id : number, dish_id : number) : Observable<any> {
-    return this.http.get(`${baseURL}menu/api/v1/restaurants/${restaurant_id}/menu/${dish_id}`)
+    return this.http.get(`${baseURL}menu/api/v1/restaurants/${restaurant_id}/menu/merchantview/${dish_id}`)
   }
 }

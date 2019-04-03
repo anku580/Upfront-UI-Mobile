@@ -10,8 +10,9 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
 
+  userDetails : any;
   profile  = {
-    username : "Anku Garg",
+    username : "",
     mobile : "9876556200",
     email : "ankugarg580@gmail.com"
   }
@@ -20,6 +21,9 @@ export class ProfileComponent implements OnInit {
     private router : Router) { }
 
   ngOnInit() {
+    this.userDetails = JSON.parse(localStorage.getItem('currentUser'));
+    console.log(this.userDetails);
+    this.profile.username = this.userDetails.username;
   }
 
   goBack() {
