@@ -12,27 +12,27 @@ import {MatBottomSheet, MatBottomSheetRef} from '@angular/material';
 export class CartComponent implements OnInit {
 
   orderDetails = [
-    {
-      restaurant_id : 1,
-      restaurant_name : "KFC",
-      restaurant_location : "Halasuru",
-      orders : [
-        {
-          dish_id : 1,
-          dish_name : "Biryani",
-          dish_quantity : 2,
-          dish_price : 120,
-          dish_total_price : 240
-        },
-        {
-          dish_id : 2,
-          dish_name : "Burger",
-          dish_quantity : 1,
-          dish_price : 120,
-          dish_total_price : 240
-        },
-      ]
-    },
+    // {
+    //   restaurant_id : 1,
+    //   restaurant_name : "KFC",
+    //   restaurant_location : "Halasuru",
+    //   orders : [
+    //     {
+    //       dish_id : 1,
+    //       dish_name : "Biryani",
+    //       dish_quantity : 2,
+    //       dish_price : 120,
+    //       dish_total_price : 240
+    //     },
+    //     {
+    //       dish_id : 2,
+    //       dish_name : "Burger",
+    //       dish_quantity : 1,
+    //       dish_price : 120,
+    //       dish_total_price : 240
+    //     },
+    //   ]
+    // },
     
   ]
 

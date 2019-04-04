@@ -1,0 +1,34 @@
+
+.card {
+    margin: 17px;
+    right: -57px;
+    position: relative;
+    padding-top: 71px;
+    padding-rightt: -18px;
+    width: 228px;
+    height: 213px;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border-radius: 109.25re;
+    border-radius: 100%;
+    border-color: darkorange;
+    top: 15px;
+    outline: none !important;
+}
+.token{
+    width: 177px;
+    margin-left: 25px;
+    border-radius: 43px;
+    border-color: rgb(252, 151, 0);
+    margin-top: 11px;
+    height: 45px;
+    font-size: 25px;
+    padding: 11px;
+    outline: none !important;
+}
+.utoken{
+margin-left: 117px;
+font-size: 37px;
+color: darkorange;
+}

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -40,7 +41,9 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { ListofdishesComponent } from './listofdishes/listofdishes.component';
 import { OtpComponent } from './otp/otp.component';
 import { PaymenttypeComponent } from './paymenttype/paymenttype.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TokenComponent } from './token/token.component';
+import { PaymentComponent } from './payment/payment.component';
 
 const routes : Routes = [
   { path: '', redirectTo: 'signup', pathMatch: 'full'},
@@ -56,8 +59,9 @@ const routes : Routes = [
   { path: 'welcomePage', component: WelcomePageComponent},
   { path: 'listofdishes', component: ListofdishesComponent},
   { path: 'otp', component: OtpComponent},
-  { path: 'paymenttype', component: PaymenttypeComponent }
-  
+  { path: 'paymenttype', component: PaymenttypeComponent },
+  { path: 'token', component: TokenComponent },
+  { path: 'payment', component: PaymentComponent }
 
 ]
 
@@ -82,7 +86,9 @@ const routes : Routes = [
     WelcomePageComponent,
     ListofdishesComponent,
     OtpComponent,
-    PaymenttypeComponent
+    PaymenttypeComponent,
+    TokenComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -92,6 +98,7 @@ const routes : Routes = [
     MatSlideToggleModule, MatToolbarModule, MatListModule, MatGridListModule,MatSnackBarModule,MatBadgeModule,MatStepperModule,
     MatCardModule, MatIconModule, MatProgressSpinnerModule, MatDialogModule,MatSidenavModule,MatTabsModule,MatBottomSheetModule,
     MatMenuModule,FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(
       routes, {
         enableTracing: true

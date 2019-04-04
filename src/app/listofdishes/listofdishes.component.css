@@ -99,7 +99,7 @@ mat-grid-list {
   }
   .add{
       float:right;
-      width:100px;
+      width:121px;
       padding:0px;
   }
   .card{
@@ -127,3 +127,50 @@ mat-grid-list {
     margin-left: -25px;
   /* }  */
  
+
+  .text_size {
+    font-size : 20px
+}
+#floatbutton{
+    color: white;
+    background-color: black;
+    position: fixed;
+    right: 2%;
+    bottom: 3%;
+    z-index: 10;
+    width: 93px;
+    border-radius: 27px;
+    /* height: 33px; */
+    vertical-align: middle;
+    text-align: center;
+    -webkit-animation-name: bgchange;
+    animation-name: bgchange;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+
+}
+/* The animation code */
+@keyframes bgchange {
+    from {background-color: rgba(248, 190, 0, 0.63);}
+    to {background-color: #ff9500;}
+  }
+.mat-menu-item{
+    outline:none !important;
+}
+#floatbutton:focus{
+    outline:none !important;
+    outline:none !important;
+}
+.mat-button{
+    outline:none !important;
+    outline:none !important;
+    margin-left: 10px;
+}
+
+.scrolling-wrapper {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;  
+}

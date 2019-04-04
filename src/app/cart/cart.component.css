@@ -4,6 +4,19 @@
 .size_heading {
     font-size: 20px;
 }
+.empty{
+    width: 90%;
+    height: 101%;
+    text-align: center;
+    padding: 15px -11px;
+    /* margin-top: 55px; */
+    margin-left: 28px;
+    margin-top: -7px;
+}
+.emptycart{
+    margin-top: -62px;
+    margin-left: 36px;
+}
 
 .fa-angle-left {
     font-size: 30px;

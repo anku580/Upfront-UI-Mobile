@@ -160,7 +160,7 @@
                 <div class="col-xs-2">
                   <i class="fa fa-inr rupee" aria-hidden="true"></i>
                 </div>
-                <div class="col-xs-8">
+                <div class="col-xs-12">
                   <button type="button" class="btn btn-warning add">Add</button>
                 </div>
               </div>
@@ -168,3 +168,29 @@
           </div>
         </div>
 </div>
+
+<mat-menu #menu="matMenu">
+    <div *ngFor="let categories of restaurantDetail">
+    <a role="button" mat-menu-item ></a>
+    </div>
+  </mat-menu>
+  
+  <div id="floatbutton">
+    
+      <!-- <button mat-button  [matMenuTriggerFor]="menu">Menu</button> -->
+  <!-- </div> -->
+
+   <div class="col-xs-4">
+              <button mat-button  [matMenuTriggerFor]="menu">Menu</button>
+
+              <mat-menu #menu="matMenu">
+                  <button mat-menu-item>North Indian</button>
+                  <button mat-menu-item>South Indian</button>
+                  <button mat-menu-item>South Indian</button>
+                  <button mat-menu-item>South Indian</button>
+                  <button mat-menu-item>South Indian</button>
+                  <button mat-menu-item>South Indian</button>
+                  <button mat-menu-item>South Indian</button>
+              </mat-menu>
+          </div> 
+          </div>

@@ -1,0 +1,32 @@
+<!-- <div class="container">
+  <input type="text" class="form-control" [(ngModel)]="name">
+  <h1>{{ name }}</h1>
+</div> -->
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 utoken">
+      <h2>U-Token</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="text-center">
+        <div class="card">
+          <input type="text" class="token" name="utoken">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form [formGroup]="formVar" #form="ngForm" (ngSubmit)="onSubmit()">
+
+    <label>Username</label>
+  <!-- <div class="formGroup"> -->
+    <input type="text" formControlName="username">
+    <label>Password</label>
+    <input type="password" formControlName="password">
+    <button button color="secondary" type="submit">Login</button>
+  <!-- </div> -->
+</form>
