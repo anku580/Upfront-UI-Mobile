@@ -1,5 +1,6 @@
 import { Component, ViewChild, } from '@angular/core';
-import { Router, NavigationStart } from '@angular/router';
+import { Router, NavigationStart, ActivatedRoute, Params, Route } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 import { } from 'googlemaps';
 
 
@@ -21,22 +22,40 @@ export class AppComponent {
 
   marker: google.maps.Marker;
   title = 'Upfront-user';
+  resId: any;
 
   showHead: boolean = false;
 
-  constructor(private router: Router) {
-    // on route change to '/login', set the variable showHead to false
-    router.events.forEach((event) => {
-      console.log(event)
-      if (event instanceof NavigationStart) {
-        if (event['url'] == '/login' || event['url'] == '/signup' || event['url'] == '/restaurant/1') {
-          this.showHead = false;
-        } else {
-          // console.log("NU")
-          this.showHead = true;
+  constructor(private router: Router, private route: ActivatedRoute) {
+
+    // this.activatedRoute.queryParams.subscribe((params : Params) => {
+    //   this.resId = params;
+    // })
+    // this.route.params.pipe(switchMap((params : Params) => {
+
+    // }))
+    this.route.params.pipe(switchMap((params: Params) => {
+      this.resId = params['id'];
+      return this.resId;
+    })).subscribe((output) => {
+      router.events.forEach((event) => {
+
+
+        console.log("This is an event:", event)
+        console.log(`/restaurant/${this.resId}`);
+        if (event instanceof NavigationStart) {
+          if (event['url'] == '/login' || event['url'] == '/signup' || event['url'] == `/restaurant/${this.resId}`) {
+            this.showHead = false;
+          } else {
+            // console.log("NU")
+            this.showHead = true;
+          }
         }
-      }
-    });
+      });
+    })
+    // on route change to '/login', set the variable showHead to false
+    // this.resId = JSON.parse(localStorage.getItem('restaurantId'));
+
   }
   ngOnInit() {
     if (navigator.geolocation) {
