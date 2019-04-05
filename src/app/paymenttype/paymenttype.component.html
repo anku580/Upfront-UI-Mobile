@@ -1,49 +1,19 @@
-<!-- <div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="white-box">
-        <div class="row">
-          <div class="col-xs-2 text-center mt-2">
-            <span class="fa fa-plus" routerLink="/payment/type"></span>
-          </div>
-          <div class="col-xs-10">
-            <a role="button" class="btn btn-default">Add a Payment method</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="white-box">
-        <div class="row">
-          <div class="col-xs-2 text-center mt-2">
-            <span class="fa fa-plus" ></span>
-          </div>
-          <div class="col-xs-10">
-            <a role="button" class="btn btn-default">Add a Payment method</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
+<label id="example-radio-group-label">Pick mode of payment</label>
 <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="favoriteSeason">
   <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
     <div (click)="selected(favoriteSeason)">{{season}}</div>
   </mat-radio-button>
 </mat-radio-group>
-<div *ngIf="favoriteSeason === 'Saved Card' ">
+<div *ngIf="favoriteSeason === 'Debit Card' ||favoriteSeason === 'Credit Card' ">
 
 
   <form class="credit-card">
     <div class="form-header">
-      <div *ngIf="favoriteSeason === 'Saved Card'">
-        <h4 class="title">Saved Card</h4>
+      <div *ngIf="favoriteSeason === 'Debit Card'">
+        <h4 class="title">Debit Card</h4>
+      </div>
+      <div *ngIf="favoriteSeason === 'Credit Card'">
+        <h4 class="title">Credit Card</h4>
       </div>
     </div>
 

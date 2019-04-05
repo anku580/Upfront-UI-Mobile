@@ -34,25 +34,40 @@ export class AppComponent {
     // this.route.params.pipe(switchMap((params : Params) => {
 
     // }))
-    this.route.params.pipe(switchMap((params: Params) => {
-      this.resId = params['id'];
-      return this.resId;
-    })).subscribe((output) => {
-      router.events.forEach((event) => {
+    // this.route.params.pipe(switchMap((params: Params) => {
+    //   this.resId = params['id'];
+    //   return this.resId;
+    // })).subscribe((output) => {
+    //   router.events.forEach((event) => {
 
 
-        console.log("This is an event:", event)
-        console.log(`/restaurant/${this.resId}`);
-        if (event instanceof NavigationStart) {
-          if (event['url'] == '/login' || event['url'] == '/signup' || event['url'] == `/restaurant/${this.resId}`) {
-            this.showHead = false;
-          } else {
-            // console.log("NU")
-            this.showHead = true;
-          }
+    //     console.log("This is an event:", event)
+    //     console.log(`/restaurant/${this.resId}`);
+    //     if (event instanceof NavigationStart) {
+    //       if (event['url'] == '/login' || event['url'] == '/signup' || event['url'] == `/restaurant/${this.resId}`) {
+    //         this.showHead = false;
+    //       } else {
+    //         // console.log("NU")
+    //         this.showHead = true;
+    //       }
+    //     }
+    //   });
+    // })
+
+    this.router.events.forEach((event) => {
+
+
+      console.log("This is an event:", event)
+      console.log(`/restaurant/${this.resId}`);
+      if (event instanceof NavigationStart) {
+        if (event['url'] == '/login' || event['url'] == '/signup' || event['url'] == `/restaurant/${this.resId}`) {
+          this.showHead = false;
+        } else {
+          // console.log("NU")
+          this.showHead = true;
         }
-      });
-    })
+      }
+    });
     // on route change to '/login', set the variable showHead to false
     // this.resId = JSON.parse(localStorage.getItem('restaurantId'));
 

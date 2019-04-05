@@ -15,6 +15,6 @@ export class RestaurantDetailService {
   }
 
   getIndividualDish(restaurant_id : number, dish_id : number) : Observable<any> {
-    return this.http.get(`${baseURL}menu/api/v1/restaurants/${restaurant_id}/menu/merchantview/${dish_id}`)
+    return this.http.get(`${baseURL}menu/api/v1/restaurants/${restaurant_id}/menu/${dish_id}`)
   }
 }

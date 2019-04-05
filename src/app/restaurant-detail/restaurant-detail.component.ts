@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import {MatSnackBar, MatSnackBarConfig} from '@angular/material';
-import {MatBottomSheet, MatBottomSheetRef} from '@angular/material';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { MatBottomSheet, MatBottomSheetRef } from '@angular/material';
 import { CustomizationComponent } from '../customization/customization.component';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
 import { Location } from '@angular/common';
@@ -19,173 +19,24 @@ import { CartService } from '../service/cart.service';
 })
 export class RestaurantDetailComponent implements OnInit {
 
-  private restaurantObj = {
-    restaurant_name : "The Empire",
-    reviews : 27,
-    rating : 4.7,
-    distance : 3.2,
-  }
+  private restaurantObj = {}
 
   private dishSelected = false;
   private Quantity;
   private favorite = false;
   private restaurantDetail;
 
-  // private restaurantDetail = [
-  //   {
-  //     category : "Starters",
-  //     dishes : [
-  //       {
-  //         dish_id : 1,
-  //         dish_name : "Chicken soup",
-  //         dish_price : 120,
-  //         imgURL : "abc",
-  //         quantity : 0,
-  //         is_selected : false
-  //       },
-  //       {
-  //         dish_id : 2,
-  //         dish_name : "Chicken soup",
-  //         dish_price : 120,
-  //         imgURL : "abc",
-  //         quantity : 0,
-  //         is_selected : false
-  //       },
-  //       {
-  //         dish_id : 3,
-  //         dish_name : "Chicken soup",
-  //         dish_price : 120,
-  //         imgURL : "abc",
-  //         quantity : 0,
-  //         is_selected : false
-  //       },
-  //       {
-  //         dish_id : 1,
-  //         dish_name : "Chicken soup",
-  //         dish_price : 120,
-  //         imgURL : "abc",
-  //         quantity : 0,
-  //         is_selected : false
-  //       },
-  //       {
-  //         dish_id : 1,
-  //         dish_name : "Chicken soup",
-  //         dish_price : 120,
-  //         imgURL : "abc",
-  //         quantity : 0,
-  //         is_selected : false
-  //       },
-  //       {
-  //         dish_id : 1,
-  //         dish_name : "Chicken soup",
-  //         dish_price : 120,
-  //         imgURL : "abc",
-  //         quantity : 0,
-  //         is_selected : false
-  //       },
-  //       {
-  //         dish_id : 1,
-  //         dish_name : "Chicken soup",
-  //         dish_price : 120,
-  //         imgURL : "abc",
-  //         quantity : 0,
-  //         is_selected : false
-  //       },
-  //       {
-  //         dish_id : 1,
-  //         dish_name : "Chicken soup",
-  //         dish_price : 120,
-  //         imgURL : "abc",
-  //         quantity : 0,
-  //         is_selected : false
-  //       },
-  //       {
-  //         dish_id : 1,
-  //         dish_name : "Chicken soup",
-  //         dish_price : 120,
-  //         imgURL : "abc",
-  //         quantity : 0,
-  //         is_selected : false
-  //       },
-  //       {
-  //         dish_id : 1,
-  //         dish_name : "Chicken soup",
-  //         dish_price : 120,
-  //         imgURL : "abc",
-  //         quantity : 0,
-  //         is_selected : false
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     category : "Main Course",
-  //     dishes : [
-  //       {
-  //         dish_id : 4,
-  //         dish_name : "Chicken soup",
-  //         dish_price : 120,
-  //         imgURL : "abc",
-  //         quantity : 0,
-  //         is_selected : false
-  //       },
-  //       {
-  //         dish_id : 5,
-  //         dish_name : "Chicken soup",
-  //         dish_price : 120,
-  //         imgURL : "abc",
-  //         quantity : 0,
-  //         is_selected : false
-  //       },
-  //       {
-  //         dish_id : 6,
-  //         dish_name : "Chicken soup",
-  //         dish_price : 120,
-  //         imgURL : "abc",
-  //         quantity : 0,
-  //         is_selected : false
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     category : "Dessert",
-  //     dishes : [
-  //       {
-  //         dish_id : 7,
-  //         dish_name : "Chicken soup",
-  //         dish_price : 120,
-  //         imgURL : "abc",
-  //         quantity : 0,
-  //         is_selected : false
-  //       },
-  //       {
-  //         dish_id : 8,
-  //         dish_name : "Chicken soup",
-  //         dish_price : 120,
-  //         imgURL : "abc",
-  //         quantity : 0,
-  //         is_selected : false
-  //       },
-  //       {
-  //         dish_id : 9,
-  //         dish_name : "Chicken soup",
-  //         dish_price : 120,
-  //         imgURL : "abc",
-  //         quantity : 0,
-  //         is_selected : false
-  //       }
-  //     ]
-  //   }
-  // ]
+
   private restaurantId;
   constructor(private snackBar: MatSnackBar,
     private bottomSheet: MatBottomSheet,
-    private location : Location,
-    private nearbyRestaurantService : NearbyRestaurantService,
-    private router : Router,
-    private route : ActivatedRoute,
+    private location: Location,
+    private nearbyRestaurantService: NearbyRestaurantService,
+    private router: Router,
+    private route: ActivatedRoute,
     // private eachDish : any
-    private restaurantService : RestaurantDetailService,
-    private cartService : CartService) { }
+    private restaurantService: RestaurantDetailService,
+    private cartService: CartService) { }
 
   ngOnInit() {
     // console.log(this.restaurantDetail[0].dishes)
@@ -198,16 +49,23 @@ export class RestaurantDetailComponent implements OnInit {
       return this.restaurantService.getRestaurantMenu(this.restaurantId);
     }))
       .subscribe(menu => {
-        this.restaurantDetail = menu.menu_list; 
-        console.log(this.restaurantDetail[0].menus)
+        this.restaurantDetail = menu.menus;
+
+        this.restaurantObj = {
+          restaurant_name: menu.restaurant_name,
+          distance: menu.distance,
+          rating: menu.ratings,
+          total_dishes: menu.no_of_dishes
+        }
+        console.log(this.restaurantDetail)
       })
   }
 
-  openBottomSheet(id : Number){
+  openBottomSheet(id: Number) {
     this.bottomSheet.open(CustomizationComponent, {
-      data : {dish_id : id, restaurant_id : this.restaurantId},
+      data: { dish_id: id, restaurant_id: this.restaurantId },
     })
-    
+
     // this.openSnackBar();
   }
 
@@ -217,31 +75,31 @@ export class RestaurantDetailComponent implements OnInit {
     config.duration = 5000;
     config.panelClass = ['blue-snackbar'];
     this.snackBar.openFromComponent(SnackbarComponent, {
-      duration: 5*1000,
+      duration: 5 * 1000,
       panelClass: []
     })
 
     // this.snackBar.openFromComponent(SnackbarComponent, config)
-    
+
   }
 
-  removeSelected(){
+  removeSelected() {
     return false;
   }
 
-  dishAddedToCart(dishId : Number) {
-    
+  dishAddedToCart(dishId: Number) {
+
     console.log("This is dish id:", dishId)
-    this.cartService.addItemToCart(dishId, 1);
     this.openBottomSheet(dishId);
+    // this.cartService.addItemToCart(dishId, 1);
     this.dishSelected = true;
   }
 
-  quantityIncrement(id : any){
-    let i = 0,j = 0;
-    for(i=0; i<this.restaurantDetail.length; i++) {
-      for(j=0; j<this.restaurantDetail[i].dishes.length; j++) {
-        if(this.restaurantDetail[i].dishes[j].dish_id == id) {
+  quantityIncrement(id: any) {
+    let i = 0, j = 0;
+    for (i = 0; i < this.restaurantDetail.length; i++) {
+      for (j = 0; j < this.restaurantDetail[i].dishes.length; j++) {
+        if (this.restaurantDetail[i].dishes[j].dish_id == id) {
           this.restaurantDetail[i].dishes[j].quantity = this.restaurantDetail[i].dishes[j].quantity + 1;
         }
       }
@@ -252,13 +110,13 @@ export class RestaurantDetailComponent implements OnInit {
     this.location.back();
   }
 
-  quantityDecrement(id : any){
-    let i = 0,j = 0;
-    for(i=0; i<this.restaurantDetail.length; i++) {
-      for(j=0; j<this.restaurantDetail[i].dishes.length; j++) {
-        if(this.restaurantDetail[i].dishes[j].dish_id == id) {
+  quantityDecrement(id: any) {
+    let i = 0, j = 0;
+    for (i = 0; i < this.restaurantDetail.length; i++) {
+      for (j = 0; j < this.restaurantDetail[i].dishes.length; j++) {
+        if (this.restaurantDetail[i].dishes[j].dish_id == id) {
           this.restaurantDetail[i].dishes[j].quantity = this.restaurantDetail[i].dishes[j].quantity - 1;
-          if(this.restaurantDetail[i].dishes[j].quantity < 1) {
+          if (this.restaurantDetail[i].dishes[j].quantity < 1) {
             this.dishSelected = false
           }
         }

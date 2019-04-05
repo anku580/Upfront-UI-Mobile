@@ -1,0 +1,29 @@
+    
+.otp{
+    width: 48% !important;
+    height: 76px;
+    text-align: center;
+    font-size: 26px;
+    border-radius: 10px;
+    margin-left: 17px;
+    margin-top: 85px;
+ 
+}
+.col-otp{
+    position: fixed;
+    top: 131px;
+    right: -79px;
+}
+.btn-warning{
+    width:45% !important;
+    border-radius: 25px;
+    margin-left: 22px;
+    
+}
+.leftangle{
+    font-size: 48px !important;
+    margin-left: 12px;
+}
+.text-center{
+    margin-top:7px;
+}

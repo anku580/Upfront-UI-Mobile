@@ -17,22 +17,22 @@ export class CustomizationComponent implements OnInit {
   private dishId;
   private restaurantId;
   public customisationData = [
-    {
-      name : "Toppings",
-      price : 10
-    },
-    {
-      name : "Toppings",
-      price : 10
-    },
-    {
-      name : "Toppings",
-      price : 10
-    },
-    {
-      name : "Toppings",
-      price : 10
-    }
+    // {
+    //   name : "Toppings",
+    //   price : 10
+    // },
+    // {
+    //   name : "Toppings",
+    //   price : 10
+    // },
+    // {
+    //   name : "Toppings",
+    //   price : 10
+    // },
+    // {
+    //   name : "Toppings",
+    //   price : 10
+    // }
   ];
 
   constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public data: any,
@@ -46,14 +46,14 @@ export class CustomizationComponent implements OnInit {
 
   ngOnInit() {
   
-    // this.loadContentToCustomisation();
-    console.log(this.customisationData);
+    this.loadContentToCustomisation();
   }
 
   loadContentToCustomisation() {
     this.restaurantService.getIndividualDish(this.restaurantId, this.dishId)
     .subscribe((output) => {
-      this.customisationData = output.customizations;
+      this.customisationData = output.menu.customizations;
+      console.log(this.customisationData);
     })
   }
 

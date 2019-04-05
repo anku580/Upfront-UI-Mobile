@@ -53,13 +53,17 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { PaymentComponent } from './payment/payment.component';
 import { PaymentmodeComponent } from './paymentmode/paymentmode.component';
+import { ListofdishesComponent } from './listofdishes/listofdishes.component';
+import { OtpComponent } from './otp/otp.component';
+import { PaymenttypeComponent } from './paymenttype/paymenttype.component';
+import { TokenComponent } from './token/token.component';
 
 
 const routes : Routes = [
   { path: '', redirectTo: 'signup', pathMatch: 'full'},
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent, canActivate : [AuthGuard]},
+  { path: 'home', component: HomeComponent},
   { path: 'cart', component: CartComponent},
   { path: 'restaurant/:id', component: RestaurantDetailComponent},
   { path: 'favourites', component: FavouritesComponent},
@@ -67,8 +71,11 @@ const routes : Routes = [
   { path: 'orderhistory', component: OrderHistoryComponent},
   { path: 'offers', component : OffersComponent},
   { path: 'welcomePage', component: WelcomePageComponent},
-  { path: 'payment', component: PaymentComponent },
-  { path: 'payment/type', component: PaymentmodeComponent}
+  { path: 'listofdishes', component: ListofdishesComponent},
+  { path: 'otp', component: OtpComponent},
+  { path: 'paymenttype', component: PaymenttypeComponent },
+  { path: 'token', component: TokenComponent },
+  { path: 'payment', component: PaymentComponent }
 
 ]
 
@@ -92,7 +99,11 @@ const routes : Routes = [
     OffersComponent,
     WelcomePageComponent,
     PaymentComponent,
-    PaymentmodeComponent
+    PaymentmodeComponent,
+    ListofdishesComponent,
+    OtpComponent,
+    PaymenttypeComponent,
+    TokenComponent
   ],
   imports: [
     BrowserModule,
