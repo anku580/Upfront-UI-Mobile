@@ -58,9 +58,11 @@ export class AppComponent {
 
 
       console.log("This is an event:", event)
+      this.resId = JSON.parse(localStorage.getItem('restaurantId'));
       console.log(`/restaurant/${this.resId}`);
       if (event instanceof NavigationStart) {
-        if (event['url'] == '/login' || event['url'] == '/signup' || event['url'] == `/restaurant/${this.resId}`) {
+        if (event['url'] == '/login' || event['url'] == '/signup' || event['url'] == `/restaurant/${this.resId}`
+            || event['url'] == '/listofdishes' || event['url'] == '/favourites') {
           this.showHead = false;
         } else {
           // console.log("NU")
@@ -69,7 +71,6 @@ export class AppComponent {
       }
     });
     // on route change to '/login', set the variable showHead to false
-    // this.resId = JSON.parse(localStorage.getItem('restaurantId'));
 
   }
   ngOnInit() {

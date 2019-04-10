@@ -17,23 +17,8 @@ export class CustomizationComponent implements OnInit {
   private dishId;
   private restaurantId;
   public customisationData = [
-    // {
-    //   name : "Toppings",
-    //   price : 10
-    // },
-    // {
-    //   name : "Toppings",
-    //   price : 10
-    // },
-    // {
-    //   name : "Toppings",
-    //   price : 10
-    // },
-    // {
-    //   name : "Toppings",
-    //   price : 10
-    // }
   ];
+  private customisationId = [];
 
   constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public data: any,
     private bottomSheetRef: MatBottomSheetRef<RestaurantDetailComponent>,
@@ -42,38 +27,35 @@ export class CustomizationComponent implements OnInit {
       // console.log("Data of customisation", data);
       this.dishId = data.dish_id;
       this.restaurantId = data.restaurant_id;
+      this.customisationData = data.customizedData;
    }
 
   ngOnInit() {
-  
-    this.loadContentToCustomisation();
+
   }
 
-  loadContentToCustomisation() {
-    this.restaurantService.getIndividualDish(this.restaurantId, this.dishId)
-    .subscribe((output) => {
-      this.customisationData = output.menu.customizations;
-      console.log(this.customisationData);
-    })
-  }
 
-  openLink() {
-    this.bottomSheetRef.dismiss();
-    // event.preventDefault();
-    this.openSnackBar()
+  openLink(custId : Number) {
+    
+    // this.bottomSheetRef.dismiss();
+    // console.log(this.customisationId.length);
+    // let i = 0;
+    // for(i=0; i<=this.customisationId.length; i++) {
+
+    //   if(this.customisationId[i] != custId){
+    //     this.customisationId.push(custId);
+    //   }
+    // }
+    console.log(this.customisationId);
+    // this.openSnackBar()
   }
 
   openSnackBar() {
     console.log("Snack bar")
     let config = new MatSnackBarConfig();
     config.panelClass = ['yellow-snack'];
-    // this.snackBar.openFromComponent(SnackbarComponent, {
-    //   duration: 5*1000,
-    //   panelClass: ['yellow-snackbar']
-    // })
 
     this.snackBar.openFromComponent(SnackbarComponent, config)
-    
   }
 
 }

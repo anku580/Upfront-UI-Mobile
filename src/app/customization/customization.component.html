@@ -14,7 +14,7 @@
       <mat-grid-tile *ngFor="let cust of customisationData">
         <div class="row">
           <div class="col-xs-12">
-              <a role="button" class="btn btn-primary btn-hover" (click)="openLink()">{{cust.name}}</a>
+              <a role="button" class="btn btn-primary btn-hover" (click)="openLink(cust.id)">{{cust.name}}</a>
           </div>
         </div>
         <br>

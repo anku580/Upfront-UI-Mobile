@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FavoritesService } from '../service/favorites.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-favourites',
@@ -7,54 +9,55 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavouritesComponent implements OnInit {
 
-  favouriteFood = [
-    {
-      dish_name: "Choco Lava",
-      restaurant_location: "Indiranagr",
-      dish_price: "120"
-    },
-    {
-      dish_name: "Choco Lava",
-      restaurant_location: "Indiranagr",
-      dish_price: "120"
-    },
-    {
-      dish_name: "Choco Lava",
-      restaurant_location: "Indiranagr",
-      dish_price: "120"
-    },
-    {
-      dish_name: "Choco Lava",
-      restaurant_location: "Indiranagr",
-      dish_price: "120"
-    },
-    {
-      dish_name: "Choco Lava",
-      restaurant_location: "Indiranagr",
-      dish_price: "120"
-    }
-  ]
+  private favorite = true;
+  private favouriteFood = [];
+  private favouriteRestaurants = [];
+  private model= {
+  };
 
-  favouriteRestaurants = [
-    {
-      imgURL : "abc",
-      name : "KFC",
-      restaurant_id : 1
-    },
-    {
-      imgURL : "abc",
-      name : "MacDonald",
-      restaurant_id : 1
-    },
-    {
-      imgURL : "abc",
-      name : "Subway",
-      restaurant_id : 1
-    },
-  ]
-  constructor() { }
+  constructor(private favouriteService: FavoritesService,
+              private router : Router) { }
 
   ngOnInit() {
+    
+    this.loadAllFavoriteDishes();
+    this.loadAllFavoriteRestaurants();
+  }
+
+  loadAllFavoriteDishes() {
+    this.favouriteService.getFavoriteDishes()
+    .subscribe((dishes) => {
+      this.favouriteFood = dishes;
+    })
+  }
+
+  addCustom() {
+    console.log(this.model)
+  }
+
+  loadAllFavoriteRestaurants() {
+    this.favouriteService.getFavoriteRestaurants()
+    .subscribe((restaurants) => {
+      this.favouriteRestaurants = restaurants;
+    })
+  }
+
+  toggleFavorite(restaurantId: Number) {
+    this.favouriteService.removeRestaurantFromFavorites(restaurantId)
+      .subscribe((output) => {
+        this.loadAllFavoriteRestaurants();
+      })
+  }
+
+  toggleFavoriteDish(dishId: Number) {
+    this.favouriteService.removeDishFromFavorites(dishId)
+      .subscribe((output) => {
+        this.loadAllFavoriteDishes();
+      })
+  }
+
+  moveToSpecificRestaurant(restaurantId : Number) {
+    this.router.navigateByUrl(`/restaurant/${restaurantId}`);
   }
 
 }

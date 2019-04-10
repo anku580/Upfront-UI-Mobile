@@ -11,7 +11,7 @@ export class RestaurantDetailService {
   constructor(private http: HttpClient) { }
   
   getRestaurantMenu(id : number) : Observable<any> {
-    return this.http.get(`${baseURL}menu/api/v1/restaurants/${id}/menu/merchantview`);
+    return this.http.get(`${baseURL}menu/api/v1/restaurants/${id}/menu`);
   }
 
   getIndividualDish(restaurant_id : number, dish_id : number) : Observable<any> {

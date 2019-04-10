@@ -65,13 +65,18 @@ const routes : Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent},
   { path: 'cart', component: CartComponent},
-  { path: 'restaurant/:id', component: RestaurantDetailComponent},
+  { path: 'restaurant/:id', component: RestaurantDetailComponent,
+    children : [
+      { path: 'listofdishes', component: ListofdishesComponent},
+    ]
+  },
   { path: 'favourites', component: FavouritesComponent},
+  { path: 'listofdishes', component: ListofdishesComponent},
+
   { path: 'profile', component: ProfileComponent, },
   { path: 'orderhistory', component: OrderHistoryComponent},
   { path: 'offers', component : OffersComponent},
   { path: 'welcomePage', component: WelcomePageComponent},
-  { path: 'listofdishes', component: ListofdishesComponent},
   { path: 'otp', component: OtpComponent},
   { path: 'paymenttype', component: PaymenttypeComponent },
   { path: 'token', component: TokenComponent },

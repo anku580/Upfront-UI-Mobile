@@ -87,3 +87,7 @@ mat-grid-list {
     margin-left : auto;
     margin-right : auto;
 }
+
+.space_below {
+    margin-bottom: 100px;
+}

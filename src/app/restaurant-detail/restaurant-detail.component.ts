@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
-import { MatBottomSheet, MatBottomSheetRef } from '@angular/material';
+import { MatBottomSheet } from '@angular/material';
 import { CustomizationComponent } from '../customization/customization.component';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
 import { Location } from '@angular/common';
@@ -10,6 +10,7 @@ import { switchMap } from 'rxjs/operators';
 
 import { RestaurantDetailService } from '../service/restaurant-detail.service';
 import { CartService } from '../service/cart.service';
+import { FavoritesService } from '../service/favorites.service';
 
 @Component({
   selector: 'app-restaurant-detail',
@@ -19,24 +20,31 @@ import { CartService } from '../service/cart.service';
 })
 export class RestaurantDetailComponent implements OnInit {
 
-  private restaurantObj = {}
-
+  private restaurantObj = {
+    restaurant_name: "",
+    distance: "",
+    rating: 4.2,
+    total_dishes: 12,
+    is_favourite : false
+  }
   private dishSelected = false;
+  private selectedDish : Number = 0;
   private Quantity;
-  private favorite = false;
-  private restaurantDetail;
-
-
+  private favorite;
+  private restaurantDetail = [];
   private restaurantId;
+  private seeMoreToggle = false;
+
+
   constructor(private snackBar: MatSnackBar,
     private bottomSheet: MatBottomSheet,
     private location: Location,
     private nearbyRestaurantService: NearbyRestaurantService,
     private router: Router,
     private route: ActivatedRoute,
-    // private eachDish : any
     private restaurantService: RestaurantDetailService,
-    private cartService: CartService) { }
+    private cartService: CartService,
+    private favouriteService : FavoritesService) { }
 
   ngOnInit() {
     // console.log(this.restaurantDetail[0].dishes)
@@ -51,19 +59,18 @@ export class RestaurantDetailComponent implements OnInit {
       .subscribe(menu => {
         this.restaurantDetail = menu.menus;
 
-        this.restaurantObj = {
-          restaurant_name: menu.restaurant_name,
-          distance: menu.distance,
-          rating: menu.ratings,
-          total_dishes: menu.no_of_dishes
-        }
-        console.log(this.restaurantDetail)
+        this.restaurantObj.restaurant_name = menu.restaurant_name;
+        this.restaurantObj.distance = menu.distance;
+        this.restaurantObj.rating = menu.ratings;
+        this.restaurantObj.total_dishes = menu.no_of_dishes;
+        this.restaurantObj.is_favourite = menu.is_favourite;
+        // console.log(this.restaurantDetail)
       })
   }
 
-  openBottomSheet(id: Number) {
+  openBottomSheet(id: Number, custom : any) {
     this.bottomSheet.open(CustomizationComponent, {
-      data: { dish_id: id, restaurant_id: this.restaurantId },
+      data: { dish_id: id, restaurant_id: this.restaurantId , customizedData : custom},
     })
 
     // this.openSnackBar();
@@ -87,10 +94,14 @@ export class RestaurantDetailComponent implements OnInit {
     return false;
   }
 
-  dishAddedToCart(dishId: Number) {
+ 
 
-    console.log("This is dish id:", dishId)
-    this.openBottomSheet(dishId);
+  dishAddedToCart(dishId: Number, custom : any) {
+
+    this.selectedDish = dishId;
+    
+    if(custom.length > 0)
+      this.openBottomSheet(dishId, custom);
     // this.cartService.addItemToCart(dishId, 1);
     this.dishSelected = true;
   }
@@ -125,7 +136,24 @@ export class RestaurantDetailComponent implements OnInit {
   }
 
   addToFavourite() {
-    this.favorite = !this.favorite;
+    // this.favorite = this.restaurantDetail.is_favourite;
+
+    if(this.restaurantObj.is_favourite == false) {
+      this.favouriteService.addRestaurantToFavorites(this.restaurantId)
+      .subscribe((output) => {
+        //restaurant added;
+        this.restaurantObj.is_favourite = true;
+        
+      })
+    }
+    else {
+      this.favouriteService.removeRestaurantFromFavorites(this.restaurantId)
+      .subscribe((output) => {
+        //restaurant removed;
+        this.restaurantObj.is_favourite = false;
+      })
+    }
+
   }
 
 }

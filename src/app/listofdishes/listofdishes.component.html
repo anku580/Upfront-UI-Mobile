@@ -4,22 +4,22 @@
       <i class="fa fa-angle-left leftarrow" (click)="goBack()"></i>
     </div>
     <div class="col-xs-8 text-center">
-      <!-- {{restaurantObj.restaurant_name}} -->
-      <h3>coco dish</h3>
+      
+      <h3>{{restaurantObj.restaurant_name}}</h3>
     </div>
     <div class="col-xs-2">
       <div class="float-right">
-        <i (click)="addToFavourite()" class="{{favorite ? 'fa fa-heart fa-lg' : 'fa fa-heart-o fa-lg'}}"></i>
+        <i (click)="addToFavourite()" class="{{restaurantObj.is_favourite ? 'fa fa-heart fa-lg' : 'fa fa-heart-o fa-lg'}}"></i>
       </div>
     </div>
   </div>
-  <div *ngFor="let category of restaurantDetail">
+  <div *ngFor="let category of restaurantDetail" >
     <div class="row">
       <div class="col-sm mt-3">
         <span><b>{{category.category}}</b></span>
       </div>
     </div>
-    <div *ngFor="let dish of category.dishes">
+    <div *ngFor="let dish of category.menus">
       <div class="card mt-2">
         <div class="row">
           <div class="col-xs-4">
@@ -28,11 +28,11 @@
           <div class="col-xs-8">
             <div class="row">
               <div class="col-xs-8">
-                <span>{{dish.dish_name}}</span>
+                <span>{{dish.name}}</span>
               </div>
               <div class="col-xs-4">
                 <div class="float-right">
-                  <i (click)="addToFavourite()" class="{{favorite ? 'fa fa-heart fa-lg' : 'fa fa-heart-o fa-lg'}}"></i>
+                  <i (click)="addToFavouriteDish(dish.id, dish.is_favourite)" class="{{dish.is_favourite ? 'fa fa-heart fa-lg' : 'fa fa-heart-o fa-lg'}}"></i>
                 </div>
               </div>
             </div>
@@ -50,11 +50,19 @@
             </div>
             <div class="row">
               <div class="col-xs-4">
-                <i class="fa fa-inr rupee" aria-hidden="true">{{dish.dish_price}}</i>
+                <i class="fa fa-inr rupee" aria-hidden="true">{{dish.original_price}}</i>
               </div>
               <div class="col-xs-8">
                 <div class="float-right">
-                  <button type="button" class="btn button-box">Add</button>
+                    <div *ngIf="selectedDish == dish.id else other" class="mt-2 mb-1">
+                        <span class="fa fa-minus fa-lg mr-2" (click)="quantityDecrement(dish.id)"></span>
+                        <span class="mr-2">{{dish.quantity}}</span>
+                        <span class="fa fa-plus mr-1 fa-lg" (click)="quantityIncrement(dish.id)"></span>
+                      </div>
+                      <ng-template #other>
+                        <a role="button" class="btn button-box"
+                          (click)="dishAddedToCart(dish.id, dish.customizations)">Add</a>
+                      </ng-template>
                 </div>
               </div>
             </div>
