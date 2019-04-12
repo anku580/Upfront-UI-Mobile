@@ -77,9 +77,9 @@
                       </div>
                       <div class="col-xs-8 button-box">
                         <div *ngIf="selectedDish == deal.id else other" class="mt-2 mb-1">
-                          <span class="fa fa-minus fa-lg mr-2" (click)="quantityDecrement(deal.id)"></span>
+                          <span class="fa fa-minus fa-lg mr-2" (click)="quantityDecrement(deal.id, deal.customizations)"></span>
                           <span class="mr-2">{{deal.quantity}}</span>
-                          <span class="fa fa-plus mr-1 fa-lg" (click)="quantityIncrement(deal.id)"></span>
+                          <span class="fa fa-plus mr-1 fa-lg" (click)="quantityIncrement(deal.id, deal.customizations)"></span>
                         </div>
                         <ng-template #other>
                           <a role="button" class="btn btn-default"

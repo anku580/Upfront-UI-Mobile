@@ -8,6 +8,9 @@ import { Params, ActivatedRoute, Router } from '@angular/router';
 import { NearbyRestaurantService } from '../service/nearby-restaurant.service';
 import { switchMap } from 'rxjs/operators';
 
+
+
+
 import { RestaurantDetailService } from '../service/restaurant-detail.service';
 import { CartService } from '../service/cart.service';
 import { FavoritesService } from '../service/favorites.service';
@@ -79,15 +82,9 @@ export class RestaurantDetailComponent implements OnInit {
   openSnackBar() {
     console.log("Snack bar")
     let config = new MatSnackBarConfig();
-    config.duration = 5000;
-    config.panelClass = ['blue-snackbar'];
-    this.snackBar.openFromComponent(SnackbarComponent, {
-      duration: 5 * 1000,
-      panelClass: []
-    })
+    config.panelClass = ['yellow-snack'];
 
-    // this.snackBar.openFromComponent(SnackbarComponent, config)
-
+    this.snackBar.openFromComponent(SnackbarComponent, config)
   }
 
   removeSelected() {
@@ -102,37 +99,42 @@ export class RestaurantDetailComponent implements OnInit {
     
     if(custom.length > 0)
       this.openBottomSheet(dishId, custom);
-    // this.cartService.addItemToCart(dishId, 1);
+    else {
+      this.cartService.addItemToCart([], dishId, 1)
+       .subscribe((output) => {
+         this.openSnackBar();
+       })
+    }
     this.dishSelected = true;
   }
 
-  quantityIncrement(id: any) {
-    let i = 0, j = 0;
-    for (i = 0; i < this.restaurantDetail.length; i++) {
-      for (j = 0; j < this.restaurantDetail[i].dishes.length; j++) {
-        if (this.restaurantDetail[i].dishes[j].dish_id == id) {
-          this.restaurantDetail[i].dishes[j].quantity = this.restaurantDetail[i].dishes[j].quantity + 1;
-        }
-      }
+  quantityIncrement(dishId: any, custom : any) {
+
+    if(custom.length > 0)
+      this.openBottomSheet(dishId, custom);
+    else {
+      this.cartService.incrementDishQuantity([], dishId,)
+       .subscribe((output) => {
+         this.openSnackBar();
+       })
     }
+    this.dishSelected = true;
   }
 
   goBack() {
     this.location.back();
   }
 
-  quantityDecrement(id: any) {
-    let i = 0, j = 0;
-    for (i = 0; i < this.restaurantDetail.length; i++) {
-      for (j = 0; j < this.restaurantDetail[i].dishes.length; j++) {
-        if (this.restaurantDetail[i].dishes[j].dish_id == id) {
-          this.restaurantDetail[i].dishes[j].quantity = this.restaurantDetail[i].dishes[j].quantity - 1;
-          if (this.restaurantDetail[i].dishes[j].quantity < 1) {
-            this.dishSelected = false
-          }
-        }
-      }
+  quantityDecrement(dishId: any, custom : any) {
+    if(custom.length > 0)
+      this.openBottomSheet(dishId, custom);
+    else {
+      this.cartService.decreaseDishQuantity([], dishId)
+       .subscribe((output) => {
+         this.openSnackBar();
+       })
     }
+    this.dishSelected = true;
   }
 
   addToFavourite() {
@@ -153,7 +155,6 @@ export class RestaurantDetailComponent implements OnInit {
         this.restaurantObj.is_favourite = false;
       })
     }
-
   }
 
 }

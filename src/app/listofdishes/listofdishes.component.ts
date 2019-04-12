@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { CustomizationComponent } from '../customization/customization.component';
 import { MatBottomSheet } from '@angular/material';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { SnackbarComponent } from '../snackbar/snackbar.component';
 
 import { RestaurantDetailService } from '../service/restaurant-detail.service';
 import { CartService } from '../service/cart.service';
@@ -33,6 +35,7 @@ export class ListofdishesComponent implements OnInit {
     private cartService: CartService,
     private favouriteService: FavoritesService,
     private bottomSheet: MatBottomSheet,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
@@ -62,18 +65,57 @@ export class ListofdishesComponent implements OnInit {
     })
   }
 
-  dishAddedToCart(dishId: Number, custom: any) {
+  openSnackBar() {
+    console.log("Snack bar")
+    let config = new MatSnackBarConfig();
+    config.panelClass = ['yellow-snack'];
 
+    this.snackBar.openFromComponent(SnackbarComponent, config)
+  }
+
+  dishAddedToCart(dishId: Number, custom : any) {
+
+    let self = this;
     this.selectedDish = dishId;
-
-    if (custom.length > 0)
+    
+    if(custom.length > 0)
       this.openBottomSheet(dishId, custom);
-    // this.cartService.addItemToCart(dishId, 1);
+    else {
+      this.cartService.addItemToCart([], dishId, 1)
+       .subscribe((output) => {
+         self.openSnackBar();
+       })
+    }
+    this.dishSelected = true;
+  }
+
+  quantityIncrement(dishId: any, custom : any) {
+
+    if(custom.length > 0)
+      this.openBottomSheet(dishId, custom);
+    else {
+      this.cartService.incrementDishQuantity([], dishId,)
+       .subscribe((output) => {
+         this.openSnackBar();
+       })
+    }
     this.dishSelected = true;
   }
 
   goBack() {
     this.location.back();
+  }
+
+  quantityDecrement(dishId: any, custom : any) {
+    if(custom.length > 0)
+      this.openBottomSheet(dishId, custom);
+    else {
+      this.cartService.decreaseDishQuantity([], dishId)
+       .subscribe((output) => {
+         this.openSnackBar();
+       })
+    }
+    this.dishSelected = true;
   }
 
   addToFavourite() {

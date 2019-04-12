@@ -11,10 +11,11 @@ export class CartService {
 
   constructor(private http: HttpClient) { }
 
-  addItemToCart(itemId : Number, quantity : Number) : Observable<any>{
+  addItemToCart(customization : Array<any>,itemId : Number, quantity : Number) : Observable<any>{
     return this.http.post(`${baseURL}cart/item/add`, {
-      "itemId" : itemId,
-      "quantity" : quantity
+      customId : customization,
+      itemId : itemId,
+      quantity : quantity
     })
   }
 
@@ -22,15 +23,17 @@ export class CartService {
     return this.http.get(`${baseURL}cart/show`);
   }
 
-  incrementDishQuantity(itemId : Number, quantity : Number) : Observable<any> {
+  incrementDishQuantity(customization : Array<any>, itemId : Number) : Observable<any> {
     return this.http.post(`${baseURL}cart/item/quantity/increase`, {
+      customId : customization,
       itemId : itemId,
       quantity : 1
     })
   }
 
-  decreaseDishQuantity(itemId : Number, quantity : Number) : Observable<any> {
+  decreaseDishQuantity(customization : Array<any>, itemId : Number) : Observable<any> {
     return this.http.post(`${baseURL}cart/item/quantity/decrease`, {
+      customId : customization,
       itemId : itemId,
       quantity : 1
     })

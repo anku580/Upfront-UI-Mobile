@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import {MatSnackBar} from '@angular/material';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
+import { CartService } from '../service/cart.service';
 // import {MatBottomSheet, MatBottomSheetRef} from '@angular/material';
 
 @Component({
@@ -64,18 +65,15 @@ export class CartComponent implements OnInit {
   ]
   
   constructor(private location : Location,
-    private snackBar : MatSnackBar) { }
+    private snackBar : MatSnackBar,
+    private cartService : CartService) { }
 
   ngOnInit() {
 
-    // this.openSnackBar();
-    
-  }
-
-  openSnackBar() {
-    this.snackBar.openFromComponent(SnackbarComponent,{
-      panelClass : ['yellow-snack']
-    })
+    this.cartService.displayItemsOfCart()
+     .subscribe((output) => {
+       
+     })  
   }
 
   quantityIncrement(id : any){

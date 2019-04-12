@@ -4,7 +4,7 @@ import {MatSnackBar, MatSnackBarConfig} from '@angular/material';
 import {RestaurantDetailComponent} from '../restaurant-detail/restaurant-detail.component'
 import { SnackbarComponent } from '../snackbar/snackbar.component';
 import {MAT_BOTTOM_SHEET_DATA} from '@angular/material';
-
+import { CartService } from '../service/cart.service';
 import { RestaurantDetailService } from '../service/restaurant-detail.service';
 
 @Component({
@@ -23,8 +23,9 @@ export class CustomizationComponent implements OnInit {
   constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public data: any,
     private bottomSheetRef: MatBottomSheetRef<RestaurantDetailComponent>,
     private snackBar: MatSnackBar,
-    private restaurantService : RestaurantDetailService) {
-      // console.log("Data of customisation", data);
+    private restaurantService : RestaurantDetailService,
+    private cartService : CartService) {
+      console.log("Data of customisation", data);
       this.dishId = data.dish_id;
       this.restaurantId = data.restaurant_id;
       this.customisationData = data.customizedData;
@@ -37,17 +38,21 @@ export class CustomizationComponent implements OnInit {
 
   openLink(custId : Number) {
     
-    // this.bottomSheetRef.dismiss();
     // console.log(this.customisationId.length);
-    // let i = 0;
-    // for(i=0; i<=this.customisationId.length; i++) {
-
-    //   if(this.customisationId[i] != custId){
-    //     this.customisationId.push(custId);
-    //   }
-    // }
-    console.log(this.customisationId);
+    if(this.customisationId.indexOf(custId) === -1) {
+      this.customisationId.push(custId)
+      console.log(this.customisationId);
+    }
+   
     // this.openSnackBar()
+  }
+
+  addCustomization() {
+    this.cartService.addItemToCart(this.customisationId, this.dishId, 1)
+    .subscribe((output) => {
+      this.bottomSheetRef.dismiss();
+      this.openSnackBar();
+    })
   }
 
   openSnackBar() {

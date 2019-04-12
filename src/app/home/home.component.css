@@ -48,6 +48,11 @@
     
 }
 
+.card {
+    height: 102px ;
+    width : 100%;
+}
+
 .card_deal {
     display: inline-block;
     width: 200px;
@@ -65,8 +70,11 @@
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .15);
 }
 
-mat-grid-list {
-      width: 1900px;
+/* mat-grid-list {
+} */
+
+.horizontal-length {
+    width: 1900px;
 }
 
 .box {

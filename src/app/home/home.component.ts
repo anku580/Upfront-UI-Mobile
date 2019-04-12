@@ -305,6 +305,8 @@ export class HomeComponent implements OnDestroy {
 
   private multipleBranches = false;
   private favorite = false;
+  private latitude;
+  private longitude;
 
   constructor(private bottomSheet: MatBottomSheet,
     private nearbyRestaurantService: NearbyRestaurantService,
@@ -325,20 +327,36 @@ export class HomeComponent implements OnDestroy {
   
   ngOnInit() {
 
-    this.nearbyRestaurantService.getNearbyRestaurants(this.appComponent.currentLat, this.appComponent.currentLong)
+    this.latitude = this.appComponent.currentLat;
+    this.longitude = this.appComponent.currentLong;
+    this.loadNearRestaurants();
+  }
+
+  loadNearRestaurants() {
+    this.nearbyRestaurantService.getNearbyRestaurants(this.latitude, this.longitude)
     .subscribe((restaurants) => {
       this.restaurantsNearBy = restaurants.restaurants;
     })
-
   }
 
   ngOnDestroy(): void {
 
   }
 
-  addToFavourite(id : any) {
-    this.favorite = true;
-    console.log("Favorite:", id);
+  addToFavourite(id : any, isFav : any) {
+    
+    if( isFav == false) {
+      this.favouriteService.addRestaurantToFavorites(id)
+       .subscribe((output) => {
+         this.loadNearRestaurants();
+       })
+    }
+    else {
+      this.favouriteService.removeRestaurantFromFavorites(id)
+       .subscribe((output) => {
+         this.loadNearRestaurants();
+       })
+    }
   }
 
   restaurantDetail(resId : number) {

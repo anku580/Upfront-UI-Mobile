@@ -5,13 +5,13 @@
 <mat-tab-group>
   <mat-tab label="Food">
     <div *ngFor="let food of favouriteFood" class="m-2">
-       <div class="card"> <!-- (click)="moveToSpecificRestaurant(food.res_id)" -->
+       <div class="card"> 
         <div class="row">
-          <div class="col-xs-4">
+          <div class="col-xs-4" (click)="moveToSpecificRestaurant(food.res_id)">
             <img src="../../assets/kfc.png" class="res_img" alt="res_img">
           </div>
           <div class="col-xs-8">
-            <div class="row">
+            <div class="row" (click)="moveToSpecificRestaurant(food.res_id)">
               <div class="col-xs-8">
                 <span><b>{{food.name}}</b></span>
               </div>
@@ -22,12 +22,12 @@
                 </div>
               </div>
             </div>
-            <div class="row">
+            <div class="row" (click)="moveToSpecificRestaurant(food.res_id)">
               <div class="col-xs-12">
                 <!-- {{food.restaurant_location}} -->
               </div>
             </div>
-            <div class="row">
+            <div class="row" (click)="moveToSpecificRestaurant(food.res_id)">
               <div class="col-xs-12">
                 <div class="float-right">
                   {{food.original_price}}
@@ -44,12 +44,12 @@
     <div *ngFor="let restaurant of favouriteRestaurants" class="m-2">
       <div class="card">
         <div class="row">
-          <div class="col-xs-4">
+          <div class="col-xs-4" (click)="moveToSpecificRestaurant(restaurant.res_id)">
             <img src="../../assets/kfc.png" class="res_img" alt="res_img">
           </div>
           <div class="col-xs-8">
             <div class="row">
-              <div class="col-xs-8">
+              <div class="col-xs-8" (click)="moveToSpecificRestaurant(restaurant.res_id)">
                 <span><b>{{restaurant.name}}</b></span>
               </div>
               <div class="col-xs-4">
@@ -59,12 +59,12 @@
                 </div>
               </div>
             </div>
-            <div class="row">
+            <div class="row" (click)="moveToSpecificRestaurant(restaurant.res_id)">
               <div class="col-xs-12">
                 {{restaurant.area}}
               </div>
             </div>
-            <div class="row float-right">
+            <div class="row  float-right" (click)="moveToSpecificRestaurant(restaurant.res_id)">
               <div class="col-xs-12">
                 <!-- Rs 120 -->
               </div>

@@ -24,7 +24,7 @@ export class AppComponent {
   title = 'Upfront-user';
   resId: any;
 
-  showHead: boolean = false;
+  showHead: boolean = true;
 
   constructor(private router: Router, private route: ActivatedRoute) {
 
@@ -57,16 +57,15 @@ export class AppComponent {
     this.router.events.forEach((event) => {
 
 
-      console.log("This is an event:", event)
-      this.resId = JSON.parse(localStorage.getItem('restaurantId'));
-      console.log(`/restaurant/${this.resId}`);
+      // console.log("This is an event:", event)
+      // this.resId = JSON.parse(localStorage.getItem('restaurantId'));
+      // console.log(`/restaurant/${this.resId}`);
       if (event instanceof NavigationStart) {
-        if (event['url'] == '/login' || event['url'] == '/signup' || event['url'] == `/restaurant/${this.resId}`
-            || event['url'] == '/listofdishes' || event['url'] == '/favourites') {
-          this.showHead = false;
+        if (event['url'] == '/home') {
+          this.showHead = true;
         } else {
           // console.log("NU")
-          this.showHead = true;
+          this.showHead = false;
         }
       }
     });

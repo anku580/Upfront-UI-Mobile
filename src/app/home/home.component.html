@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row box">
-       
+
   </div>
   <div class="row">
     <div class="col-sm mt-3">
@@ -9,7 +9,7 @@
   </div>
 
   <div class="scrolling-wrapper">
-    <mat-grid-list cols={{deals.length}} rowHeight="130px">
+    <mat-grid-list cols={{deals.length}} rowHeight="130px"  class="horizontal-length">
       <mat-grid-tile *ngFor="let deal of deals" [rowspan]="1" [colspan]="1">
         <div class="card card_deal">
           <div class="row">
@@ -42,106 +42,108 @@
   </div>
 
   <div class="space_below">
-  <mat-tab-group>
+    <mat-tab-group>
 
-    <mat-tab label="Food Style">
+      <mat-tab label="Food Style">
 
-      <div *ngFor="let pdish of popularDishes">
-        <div class="mt-2">
-          <span><b>{{pdish.dish_category}}</b></span>
-        </div>
-        <div class="scrolling-wrapper">
-          <mat-grid-list cols={{pdish.dish_deatails.length}} rowHeight="250px">
-            <mat-grid-tile *ngFor="let deal of pdish.dish_deatails" [routerLink]="['/restaurant', 1]" [rowspan]="1"
-              [colspan]="1">
-              <div class="card card_dish text-center">
-                <div>
-                  <div class="row">
-                    <div class="col-xs-12 mt-1">
-                      <img src="../../assets/dish_2.jpg" class="deal_img">
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-xs-12">
-                      <span><b>{{deal.dish_name}}</b></span>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-xs-12">
-                      <span>{{deal.restaurant_location}}</span>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-xs-4 mt-2 mr-2">
-                      <span><b>{{"Rs "}}</b></span><span id="green">{{deal.dish_price}}</span>
-                    </div>
-                    <div class="col-xs-8 button-box">
-                      <div *ngIf="dishSelected" class="mt-2 mb-1">
-                        <span class="fa fa-minus fa-lg mr-2" (click)="quantityDecrement(deal.dish_id)"></span>
-                        <span class="mr-2">{{deal.quantity}}</span>
-                        <span class="fa fa-plus mr-1 fa-lg" (click)="quantityIncrement(deal.dish_id)"></span>
-                      </div>
-                      <div *ngIf="!dishSelected">
-                        <a role="button" class="btn btn-default" (click)="dishAddedToCart(deal.dish_id)">Add</a>
+        <div *ngFor="let pdish of popularDishes">
+          <div class="mt-2">
+            <span><b>{{pdish.dish_category}}</b></span>
+          </div>
+          <div class="scrolling-wrapper">
+            <mat-grid-list cols={{pdish.dish_deatails.length}} rowHeight="250px" class="horizontal-length">
+              <mat-grid-tile *ngFor="let deal of pdish.dish_deatails" [routerLink]="['/restaurant', 1]" [rowspan]="1"
+                [colspan]="1">
+                <div class="card card_dish text-center">
+                  <div>
+                    <div class="row">
+                      <div class="col-xs-12 mt-1">
+                        <img src="../../assets/dish_2.jpg" class="deal_img">
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </mat-grid-tile>
-          </mat-grid-list>
-        </div>
-      </div>
-
-    </mat-tab>
-    <mat-tab label="Near me">
-      <div *ngFor="let restaurant of restaurantsNearBy" class="m-2">
-        <div class="card" (click)="multipleBranches ? openBottomSheet() : restaurantDetail(restaurant.id)">
-          <div>
-            <div class="row m-2">
-              <div class="col-xs-4">
-                <div class="text-center">
-                  <img src="../../assets/kfc.png" class="res_img" alt="res_img">
-                </div>
-              </div>
-              <div class="col-xs-8 ml-2">
-                <div class="row">
-                  <div class="col-xs-10">
-                    <span>{{restaurant.name}}</span>
-                  </div>
-                  <div class="col-xs-2">
-                    <!--repace this with a veg/non-veg symbol-->
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-12">
-                    <div *ngIf="multipleBranches">
-                      <span>{{ "3 Branches"}}</span>
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <span><b>{{deal.dish_name}}</b></span>
+                      </div>
                     </div>
-                    <div *ngIf="!multipleBranches">
-                      <span>{{restaurant.area}}</span>
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <span>{{deal.restaurant_location}}</span>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-4 mt-2 mr-2">
+                        <span><b>{{"Rs "}}</b></span><span id="green">{{deal.dish_price}}</span>
+                      </div>
+                      <div class="col-xs-8 button-box">
+                        <div *ngIf="dishSelected" class="mt-2 mb-1">
+                          <span class="fa fa-minus fa-lg mr-2" (click)="quantityDecrement(deal.dish_id)"></span>
+                          <span class="mr-2">{{deal.quantity}}</span>
+                          <span class="fa fa-plus mr-1 fa-lg" (click)="quantityIncrement(deal.dish_id)"></span>
+                        </div>
+                        <div *ngIf="!dishSelected">
+                          <a role="button" class="btn btn-default" (click)="dishAddedToCart(deal.dish_id)">Add</a>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-xs-4">
-                    <span class="fa fa-star fa-small">{{restaurant.ratings}}</span>
-                  </div>
-                  <div class="col-xs-4">
-                    <span class="fa fa-map-marker fa-small ml-4">{{restaurant.distance}}</span>
-                  </div>
-                  <div class="col-xs-4">
-                    <div class="float-right">
-                    <span (click)="addToFavourite(restaurant.id)" class="{{favorite ? 'fa fa-heart fa-lg' : 'fa fa-heart-o fa-lg'}}"></span>
-                  </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+              </mat-grid-tile>
+            </mat-grid-list>
           </div>
         </div>
-      </div>
-    </mat-tab>
-  </mat-tab-group>
-</div>
+
+      </mat-tab>
+      <mat-tab label="Near me">
+        <mat-grid-list cols="1" rowHeight="112px">
+          <mat-grid-tile *ngFor="let restaurant of restaurantsNearBy" [rowspan]="1" [colspan]="1">
+            <div class="card">
+                <div class="row">
+                  <div class="col-xs-4" (click)="multipleBranches ? openBottomSheet() : restaurantDetail(restaurant.id)">
+                    <div class="text-center">
+                      <img src="../../assets/kfc.png" class="res_img" alt="res_img">
+                    </div>
+                  </div>
+                  <div class="col-xs-8 ml-2">
+                    <div class="row" (click)="multipleBranches ? openBottomSheet() : restaurantDetail(restaurant.id)">
+                      <div class="col-xs-10">
+                        <span>{{restaurant.name}}</span>
+                      </div>
+                      <div class="col-xs-2">
+                        <!--repace this with a veg/non-veg symbol-->
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div *ngIf="multipleBranches">
+                          <span>{{ "3 Branches"}}</span>
+                        </div>
+                        <div *ngIf="!multipleBranches">
+                          <span>{{restaurant.area}}</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-4">
+                        <span class="fa fa-star fa-small">{{restaurant.ratings}}</span>
+                      </div>
+                      <div class="col-xs-4">
+                        <span class="fa fa-map-marker fa-small ml-4">{{restaurant.distance}}</span>
+                      </div>
+                      <div class="col-xs-4">
+                        <div class="float-right">
+                          <span (click)="addToFavourite(restaurant.id, restaurant.is_favourite)"
+                            class="{{restaurant.is_favourite ? 'fa fa-heart fa-lg' : 'fa fa-heart-o fa-lg'}}"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+            </div>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
 </div>
