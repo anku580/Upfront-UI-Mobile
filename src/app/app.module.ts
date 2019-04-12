@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { RouterModule, Routes, CanActivate } from '@angular/router';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
@@ -16,10 +14,8 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import 'hammerjs';
 import { MatSidenavModule } from '@angular/material/sidenav';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthInterceptor, UnauthorizedInterceptor } from './service/auth.interceptor';
-
 import {
   MatButtonModule, MatCheckboxModule, MatDatepickerModule, MatFormFieldModule,
   MatInputModule, MatRadioModule, MatSelectModule, MatSliderModule,
@@ -34,7 +30,6 @@ import { RestaurantDetailService } from './service/restaurant-detail.service';
 import { CartService } from './service/cart.service';
 import { AuthGuardService } from './service/auth-guard.service';
 import { AuthGuardService as AuthGuard } from './service/auth-guard.service';
-
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -64,7 +59,7 @@ const routes : Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent},
-  { path: 'cart', component: CartComponent},
+  { path: 'cart', component: CartComponent, canActivate : [AuthGuard]},
   { path: 'restaurant/:id', component: RestaurantDetailComponent,
     children : [
       { path: 'listofdishes', component: ListofdishesComponent},
@@ -72,15 +67,14 @@ const routes : Routes = [
   },
   { path: 'favourites', component: FavouritesComponent},
   { path: 'listofdishes', component: ListofdishesComponent},
-
-  { path: 'profile', component: ProfileComponent, },
-  { path: 'orderhistory', component: OrderHistoryComponent},
+  { path: 'profile', component: ProfileComponent, canActivate : [AuthGuard]},
+  { path: 'orderhistory', component: OrderHistoryComponent, canActivate : [AuthGuard]},
   { path: 'offers', component : OffersComponent},
   { path: 'welcomePage', component: WelcomePageComponent},
-  { path: 'otp', component: OtpComponent},
-  { path: 'paymenttype', component: PaymenttypeComponent },
-  { path: 'token', component: TokenComponent },
-  { path: 'payment', component: PaymentComponent }
+  { path: 'otp', component: OtpComponent, canActivate : [AuthGuard]},
+  { path: 'paymenttype', component: PaymenttypeComponent, canActivate : [AuthGuard] },
+  { path: 'token', component: TokenComponent, canActivate : [AuthGuard] },
+  { path: 'payment', component: PaymentComponent, canActivate : [AuthGuard] }
 
 ]
 

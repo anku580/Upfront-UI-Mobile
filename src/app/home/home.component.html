@@ -9,7 +9,7 @@
   </div>
 
   <div class="scrolling-wrapper">
-    <mat-grid-list cols={{deals.length}} rowHeight="130px"  class="horizontal-length">
+    <mat-grid-list cols={{deals.length}} rowHeight="130px" class="horizontal-length">
       <mat-grid-tile *ngFor="let deal of deals" [rowspan]="1" [colspan]="1">
         <div class="card card_deal">
           <div class="row">
@@ -72,10 +72,12 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-xs-4 mt-2 mr-2">
-                        <span><b>{{"Rs "}}</b></span><span id="green">{{deal.dish_price}}</span>
+                      <div class="text-center">
+                        <div class="col-xs-12 mt-2 mr-2">
+                          <span><b>{{"Rs "}}</b></span><span id="green">{{deal.dish_price}}</span>
+                        </div>
                       </div>
-                      <div class="col-xs-8 button-box">
+                      <!-- <div class="col-xs-8 button-box">
                         <div *ngIf="dishSelected" class="mt-2 mb-1">
                           <span class="fa fa-minus fa-lg mr-2" (click)="quantityDecrement(deal.dish_id)"></span>
                           <span class="mr-2">{{deal.quantity}}</span>
@@ -84,7 +86,7 @@
                         <div *ngIf="!dishSelected">
                           <a role="button" class="btn btn-default" (click)="dishAddedToCart(deal.dish_id)">Add</a>
                         </div>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                 </div>
@@ -98,48 +100,48 @@
         <mat-grid-list cols="1" rowHeight="112px">
           <mat-grid-tile *ngFor="let restaurant of restaurantsNearBy" [rowspan]="1" [colspan]="1">
             <div class="card">
-                <div class="row">
-                  <div class="col-xs-4" (click)="multipleBranches ? openBottomSheet() : restaurantDetail(restaurant.id)">
-                    <div class="text-center">
-                      <img src="../../assets/kfc.png" class="res_img" alt="res_img">
+              <div class="row">
+                <div class="col-xs-4" (click)="multipleBranches ? openBottomSheet() : restaurantDetail(restaurant.id)">
+                  <div class="text-center">
+                    <img src="../../assets/kfc.png" class="res_img" alt="res_img">
+                  </div>
+                </div>
+                <div class="col-xs-8 ml-2">
+                  <div class="row" (click)="multipleBranches ? openBottomSheet() : restaurantDetail(restaurant.id)">
+                    <div class="col-xs-10">
+                      <span>{{restaurant.name}}</span>
+                    </div>
+                    <div class="col-xs-2">
+                      <!--repace this with a veg/non-veg symbol-->
                     </div>
                   </div>
-                  <div class="col-xs-8 ml-2">
-                    <div class="row" (click)="multipleBranches ? openBottomSheet() : restaurantDetail(restaurant.id)">
-                      <div class="col-xs-10">
-                        <span>{{restaurant.name}}</span>
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <div *ngIf="multipleBranches">
+                        <span>{{ "3 Branches"}}</span>
                       </div>
-                      <div class="col-xs-2">
-                        <!--repace this with a veg/non-veg symbol-->
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-xs-12">
-                        <div *ngIf="multipleBranches">
-                          <span>{{ "3 Branches"}}</span>
-                        </div>
-                        <div *ngIf="!multipleBranches">
-                          <span>{{restaurant.area}}</span>
-                        </div>
+                      <div *ngIf="!multipleBranches">
+                        <span>{{restaurant.area}}</span>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-xs-4">
-                        <span class="fa fa-star fa-small">{{restaurant.ratings}}</span>
-                      </div>
-                      <div class="col-xs-4">
-                        <span class="fa fa-map-marker fa-small ml-4">{{restaurant.distance}}</span>
-                      </div>
-                      <div class="col-xs-4">
-                        <div class="float-right">
-                          <span (click)="addToFavourite(restaurant.id, restaurant.is_favourite)"
-                            class="{{restaurant.is_favourite ? 'fa fa-heart fa-lg' : 'fa fa-heart-o fa-lg'}}"></span>
-                        </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-4">
+                      <span class="fa fa-star fa-small">{{restaurant.ratings}}</span>
+                    </div>
+                    <div class="col-xs-4">
+                      <span class="fa fa-map-marker fa-small ml-4">{{restaurant.distance}}</span>
+                    </div>
+                    <div class="col-xs-4">
+                      <div class="float-right">
+                        <span (click)="addToFavourite(restaurant.id, restaurant.is_favourite)"
+                          class="{{restaurant.is_favourite ? 'fa fa-heart fa-lg' : 'fa fa-heart-o fa-lg'}}"></span>
                       </div>
                     </div>
                   </div>
                 </div>
-              
+              </div>
+
             </div>
           </mat-grid-tile>
         </mat-grid-list>

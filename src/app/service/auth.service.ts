@@ -110,6 +110,7 @@ export class AuthService {
     return this.http.post<AuthResponse>(baseURL + 'myuser/login/cust/', user)
       .pipe(map(res => {
         console.log("Inside the pipe");
+        this.isAuthenticated = true;
         this.storeUserCredentials(
           {
             username: user.username,
